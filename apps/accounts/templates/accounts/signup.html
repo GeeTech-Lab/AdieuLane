@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% block title %}register{% endblock %}
+
+{% block content %}
+<div class="register-page full-screen sidebar-collapse">
+  <div class="wrapper">
+    <div class="page-header" style="background-image: url('https://res.cloudinary.com/geetechlab-com/image/upload/v1660091365/nwaben.com/daddy_candle_2_aljs2p.jpg');">
+      <div class="filter"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-7 col-12 ml-auto">
+            <div class="info info-horizontal">
+              <div class="icon">
+                <i class="fa fa-umbrella"></i>
+              </div>
+              <div class="description">
+                <h3> We've got you covered </h3>
+                <p>Larger, yet dramatically thinner. More powerful, but remarkably power efficient. Everything you need in a single case.</p>
+              </div>
+            </div>
+            <div class="info info-horizontal">
+              <div class="icon">
+                <i class="fa fa-map-signs"></i>
+              </div>
+              <div class="description">
+                <h3> Clear Directions </h3>
+                <p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.</p>
+              </div>
+            </div>
+{#            <div class="info info-horizontal">#}
+{#              <div class="icon">#}
+{#                <i class="fa fa-user-secret"></i>#}
+{#              </div>#}
+{#              <div class="description">#}
+{#                <h3> We value your privacy </h3>#}
+{#                <p>Completely synergize resource taxing relationships via premier niche markets.</p>#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-5 col-12 mr-auto">
+            <div class="card card-register bg-light">
+              <h3 class="card-title text-center">Register</h3>
+                <div id="username-error" class="text-center mt-2"></div>
+                <div id="email-error" class="text-center"></div>
+                <div id="password-error" class="text-center"></div>
+              <form class="register-form mt-3" method="post" action="{% url 'accounts:signup' %}">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Jonny123" class="form-control" hx-post="/accounts/check_username/" hx-trigger="keyup" hx-target="#username-error">
+                <input type="email" name="email" placeholder="example@email.com" class="form-control" hx-post="/accounts/check_email/" hx-trigger="keyup" hx-target="#email-error">
+                <input type="text" name="first_name" placeholder="John" class="form-control">
+                <input type="text" name="last_name" placeholder="Ezeh" class="form-control">
+                <input type="password" name="password" placeholder="********" class="form-control" id="password-input">
+                <input type="password" name="password2" placeholder="********" class="form-control" id="password-input" hx-post="/accounts/check_password/" hx-trigger="keyup" hx-target="#password-error">
+                <button class="btn btn-block btn-round" type="submit">Register</button>
+              </form>
+              <div class="login">
+                <p>Already have an account?
+                  <a href="{% url 'accounts:login' %}">Login</a>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{#    <script>#}
+{#        function viewPassword() {#}
+{#            const input = document.querySelector("#password-input");#}
+{#            // When an input is checked, or whatever...#}
+{#            if (input.getAttribute("type") === "password") {#}
+{#                input.setAttribute("type", "text");#}
+{#            } else {#}
+{#                input.setAttribute("type", "password");#}
+{#            }#}
+{#        }#}
+{#    </script>#}
+
+
+{% endblock %}

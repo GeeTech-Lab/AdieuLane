@@ -1,0 +1,6 @@
+<form action="{% url 'search' %}" method="get" role="search" class="form-inline search-form">
+    <div class="input-group no-border">
+      <span class="input-group-addon addon-xtreme no-border" id="basic-addon1"><i class="fa fa-search"></i></span>
+      <input type="text" class="form-control input-xtreme no-border" name="q" value="{{ request.GET.q }}" placeholder="Search here..." aria-describedby="basic-addon1">
+    </div>
+</form>

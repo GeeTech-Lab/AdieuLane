@@ -1,0 +1,41 @@
+{% if donations %}
+    <style>
+        .my-custom-scrollbar {
+            position: relative;
+            height: 650px;
+            overflow: auto;
+        }
+        .table-wrapper-scroll-y {
+            display: block;
+        }
+    </style>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar mt-5">
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th>Names of donors</th>
+                {#<th>Amount</th>#}
+            </tr>
+            </thead>
+            <tbody>
+            {% for d in donations %}
+                <tr>
+                    <td class="text-center">{{ d.pk }}</td>
+                    <td>{{ d.donor_fullname }}</td>
+                    {#<td>Ammount</td>#}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="info">
+        <div class="icon icon-primary">
+            <img class="pull-left" src="https://img.icons8.com/color/48/000000/charity-donation.png"/>
+        </div>
+        <div class="description">
+            <p>Be the first to donate</p>
+        </div>
+    </div>
+{% endif %}

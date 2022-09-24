@@ -1,0 +1,450 @@
+{% load widget_tweaks %}
+
+<!-- Tab panes -->
+<div class="tab-content">
+    {% if galleries %}
+
+        <!-- Image Tab Pane -->
+        <div class="tab-pane active" id="photo" role="tabpanel" aria-labelledby="home-tab">
+            <!-- Upload Photo input modal -->
+            {% if request.user.is_authenticated %}
+                <div class="row justify-content-end">
+                    <button type="button" class="btn btn-move-right btn-round" data-toggle="modal"
+                            data-target="#imageFormModal">
+                        <i class="fa fa-image"></i> Upload Image
+                    </button>
+                </div>
+                <br>
+            {% else %}
+                <div class="row justify-content-end">
+                    <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-round" type="button">
+                        <i class="fa fa-upload"></i> upload
+                    </a>
+                </div>
+                <br>
+            {% endif %}
+
+            <!-- Root element of PhotoSwipe. Must have class pswp. -->
+            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+                <!-- Background of PhotoSwipe.
+                         It's a separate element as animating opacity is faster than rgba(). -->
+                <div class="pswp__bg"></div>
+
+                <!-- Slides wrapper with overflow:hidden. -->
+                <div class="pswp__scroll-wrap">
+
+                    <!-- Container that holds slides.
+                            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                            Don't modify these 3 pswp__item elements, data is added later on. -->
+                    <div class="pswp__container">
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                    </div>
+
+                    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+                    <div class="pswp__ui pswp__ui--hidden">
+
+                        <div class="pswp__top-bar">
+
+                            <!--  Controls are self-explanatory. Order can be changed. -->
+
+                            <div class="pswp__counter"></div>
+
+                            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                            <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                            <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                            <!-- element will get class pswp__preloader--active when preloader is running -->
+                            <div class="pswp__preloader">
+                                <div class="pswp__preloader__icn">
+                                    <div class="pswp__preloader__cut">
+                                        <div class="pswp__preloader__donut"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                            <div class="pswp__share-tooltip"></div>
+                        </div>
+
+                        <button class="pswp__button pswp__button--arrow--left"
+                                title="Previous (arrow left)"></button>
+
+                        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+                        <div class="pswp__caption">
+                            <div class="pswp__caption__center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Main image gallery -->
+            <div id="image_list" class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+                <div class="row">
+                    {% for g in galleries %}
+                        {% if g.image %}
+                            <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"
+                                    class="col-md-3 col-sm-4 gallery-item">
+                                <a href="{{ g.image_url }}"
+                                   itemprop="contentUrl"
+                                   data-size="750x1002">
+                                    <img src="{{ g.image_url }}"
+                                         style="width: 200px; height: 200px"
+                                         itemprop="thumbnail"
+                                         alt="image memory"
+                                         class="vertical-image img-rounded img-responsive"/>
+                                </a>
+                                <figcaption itemprop="caption description" class="gallery-caption">
+                                    {{ g.description }}
+                                </figcaption>
+                            </figure>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- Image Tab Pane -->
+
+        <!-- Video Tab Pane -->
+        <div class="tab-pane" id="video" role="tabpanel" aria-labelledby="profile-tab">
+            <!-- Upload Video input modal -->
+            {% if request.user.is_authenticated %}
+                <div class="row justify-content-end">
+                    <button type="button" class="btn btn-move-right btn-round" data-toggle="modal"
+                            data-target="#videoFormModal">
+                        <i class="fa fa-youtube-play"></i> Upload Video
+                    </button>
+                </div>
+                <br>
+            {% else %}
+                <div class="row justify-content-end">
+                    <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-round" type="button">
+                        <i class="fa fa-upload"></i> upload
+                    </a>
+                </div>
+                <br>
+            {% endif %}
+
+            <div class="content-center">
+                <div class="container">
+                    <div class="row">
+                        {% for g in galleries %}
+                            {% if g.video %}
+                                <div class="col-md-4">
+                                    <div class="iframe-container">
+                                        <iframe
+                                                src="{{ g.video }}"
+                                                frameborder="0"
+                                                allowfullscreen height="250"
+                                                modestbranding=1
+                                                autohide=1
+                                                showinfo=0>
+                                        </iframe>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Video Tab Pane -->
+
+        <!-- Audio Tab Pane -->
+        <div class="tab-pane" id="audio" role="tabpanel" aria-labelledby="messages-tab">
+            <!-- Upload Audio input modal -->
+            {% if request.user.is_authenticated %}
+                <div class="row justify-content-end">
+                    <button type="button" class="btn btn-move-right btn-round" data-toggle="modal"
+                            data-target="#audioFormModal">
+                        <i class="fa fa-music"></i> Upload Audio
+                    </button>
+                </div>
+                <br>
+            {% else %}
+                <div class="row justify-content-end">
+                    <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-round" type="button">
+                        <i class="fa fa-upload"></i> upload
+                    </a>
+                </div>
+                <br>
+            {% endif %}
+
+            <div class="table-responsive">
+                <table class="table table-shopping">
+                    <thead>
+                    <tr>
+                        <th class="text-center"></th>
+                        <th>Description</th>
+                        <th class="th-description">audio</th>
+                    </tr>
+                    </thead>
+                    <tbody id="audio_list">
+                    {% if g.audio %}
+                        <tr>
+                            <td>
+                                <div class="img-container">
+                                    <img src="https://img.icons8.com/color/480/000000/high-volume--v1.png"/>
+                                </div>
+                            </td>
+                            <td>
+                                <small>{{ g.description }}</small>
+                            </td>
+                            <td>
+                                <audio controls="controls" controls="download"><br>
+                                    <source src="{{ g.audio_url }}" type="audio/mp3"/>
+                                </audio>
+                            </td>
+                        </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Audio Tab Pane -->
+
+    {% else %}
+
+        <div class="tab-pane active" id="photo" role="tabpanel" aria-labelledby="home-tab">
+            <!-- Upload Photo input modal -->
+            {% if request.user.is_authenticated %}
+                <div class="row justify-content-end">
+                    <button type="button" class="btn btn-move-right btn-round" data-toggle="modal"
+                            data-target="#imageFormModal">
+                        <i class="fa fa-image"></i> Upload Image
+                    </button>
+                </div>
+                <br>
+            {% else %}
+                <div class="row justify-content-end">
+                    <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-round" type="button">
+                        <i class="fa fa-upload"></i> upload
+                    </a>
+                </div>
+                <br>
+            {% endif %}
+
+            <div class="info">
+                <div class="icon icon-primary">
+                    <img src="https://img.icons8.com/color/48/000000/photo-album.png"/>
+                </div>
+                <div class="description">
+                    <h4 class="info-title">Image Gallery Empty</h4>
+                    <p>Click on the below button to add image memory photo of {{ memory.get_name }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="video" role="tabpanel" aria-labelledby="profile-tab">
+            <!-- Upload Video input modal -->
+
+            {% if request.user.is_authenticated %}
+                <div class="row justify-content-end">
+                    <button type="button" class="btn btn-move-right btn-round" data-toggle="modal"
+                            data-target="#videoFormModal">
+                        <i class="fa fa-youtube-play"></i> Upload Video
+                    </button>
+                </div>
+                <br>
+            {% else %}
+                <div class="row justify-content-end">
+                    <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-round" type="button">
+                        <i class="fa fa-upload"></i> upload
+                    </a>
+                </div>
+                <br>
+            {% endif %}
+
+            <div class="info">
+                <div class="icon icon-primary">
+                    <img src="https://img.icons8.com/color/48/000000/video.png"/>
+                </div>
+                <div class="description">
+                    <h4 class="info-title"> Video Gallery Empty</h4>
+                    <p>Click on the below button to add video memory of the deceased</p>
+                    {#                    <a href="#" class="btn btn-link btn-info">Add video</a>#}
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="audio" role="tabpanel" aria-labelledby="messages-tab">
+            <!-- Upload Audio input modal -->
+            {% if request.user.is_authenticated %}
+                <div class="row justify-content-end">
+                    <button type="button" class="btn btn-move-right btn-round" data-toggle="modal"
+                            data-target="#audioFormModal">
+                        <i class="fa fa-music"></i> Upload Audio
+                    </button>
+                </div>
+                <br>
+            {% else %}
+                <div class="row justify-content-end">
+                    <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-round" type="button">
+                        <i class="fa fa-upload"></i> upload
+                    </a>
+                </div>
+                <br>
+            {% endif %}
+
+            <div class="info">
+                <div class="icon icon-primary">
+                    <img src="https://img.icons8.com/color/48/000000/high-volume--v1.png"/>
+                </div>
+                <div class="description">
+                    <h4 class="info-title"> Audio Gallery Empty</h4>
+                    <p>Click on the below button to add audio memory of the deceased</p>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+</div>
+
+
+<!-- Upload image modal -->
+<div class="modal fade" id="imageFormModal" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog modal-register">
+        <div class="modal-content">
+            <div class="modal-header no-border-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h6 class="text-muted">add an image</h6>
+            </div>
+            <div class="modal-body">
+                <form
+                        hx-post="{% url 'memorials:add_gallery_v2' memorial.slug %}"
+                        hx-target="#image_list"
+                        hx-trigger="submit"
+                        hx-encoding="multipart/form-data"
+                        _="on htmx:afterRequest reset() me then on submit toggle @disabled on <button /> until htmx:afterOnLoad">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>image file</label>
+                        <input id="max_id" type="hidden" name="MAX_FILE_SIZE" value="30000000"/>
+                        <input onchange="upload_check()" id="file_id" type="file" name="memory_image" accept="image/*" class="input-group"/>
+                        {{ form.image|attr:"class:input-group"|attr:"id:file_id"|attr:"type:file"|attr:"accept:image/*"|attr:"onchange:upload_check()" }}
+                        <small>Maximum image size 3mb</small>
+                    </div>
+                    <div class="form-group">
+                        <textarea
+                                placeholder="Write details/summary of this Image(s)"
+                                class="form-control"
+                                name="description"
+                                rows="3">
+                        </textarea>
+                    </div>
+                    <button @click.debounce.100ms
+                            type="submit"
+                            class="btn btn-block btn-round">
+                        <i class="fa fa-upload"></i> upload
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Upload video modal -->
+<div class="modal fade" id="videoFormModal" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog modal-register">
+        <div class="modal-content">
+            <div class="modal-header no-border-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h6 class="text-muted">add a Video</h6>
+            </div>
+            <div class="modal-body">
+                <form
+                        hx-post="{% url 'memorials:add_gallery' memorial.slug %}"
+                        hx-target="#video_list"
+                        _="on htmx:afterRequest reset() me">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label><i class="fa fa-youtube fa-2x mr-3"></i>video link</label>
+                        <input class="form-control" type="url" name="memory_video"
+                               placeholder="https://www.youtube.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Video Description</label>
+                        <textarea placeholder="Write details/summary of this video" name="description"
+                                  class="form-control" rows="3">
+                            </textarea>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-round">
+                        <i class="fa fa-upload"></i> upload
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Upload audio modal -->
+<div class="modal fade" id="audioFormModal" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog modal-register">
+        <div class="modal-content">
+            <div class="modal-header no-border-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h6 class="text-muted">add an audio</h6>
+            </div>
+            <div class="modal-body">
+                <form
+                        hx-encoding="multipart/form-data"
+                        hx-post="{% url 'memorials:add_gallery' memorial.slug %}"
+                        hx-target="#audio_list"
+                        _="on htmx:afterRequest reset() me">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>Audio File</label>
+                        <input id="max_id" type="hidden" name="MAX_FILE_SIZE" value="30000000"/>
+                        <input id="file_id" type="file" name="memory_audio"
+                               accept="audio/*"
+                               class="input-group"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Audio Description</label>
+                        <textarea
+                                placeholder="Write details/summary of this audio"
+                                name="description"
+                                Qclass="form-control" rows="3">
+                            </textarea>
+                    </div>
+                    <div x-data="{showLoader: false}">
+                        <button @click="showLoader=true, upLoader=false" type="submit" class="btn btn-block btn-round">
+                            <i x-hide="upLoader" class="fa fa-upload"></i>
+                            <i x-show="showLoader" class="fa fa-spinner fa-spin"></i>
+                            upload
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function upload_check() {
+        let upl = document.getElementById("file_id");
+        let max = document.getElementById("max_id").value;
+
+        if (upl.files[0].size > max) {
+            swal("File too big! exceeds 30mb convert file size");
+            upl.value = "";
+        }
+    }
+</script>

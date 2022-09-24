@@ -1,0 +1,169 @@
+{% url 'home' as home %}
+{% url 'memorials:list' as memorial_list %}
+{% url 'accounts:login' as login %}
+{% url 'accounts:signup' as register %}
+
+
+<!-- Navbar -->
+{#{% if request.path == home or request.path == login or request.path == register or request.path == about or request.path == profile  or request.path == album_list or request.path == memorial_list %}#}
+<nav class="navbar navbar-expand-lg nav-down navbar-absolute navbar-transparent" color-on-scroll="500">
+    {#{% else %}#}
+    {#    <nav class="navbar navbar-expand-lg navbar-absolute nav-down">#}
+    {#{% endif %}#}
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand" href="{% url 'home' %}" rel="tooltip" title="adieulane" data-placement="bottom">
+                AdieuLane
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+                    aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    {% if request.path == home %}
+                        <a href="{% url 'home' %}" class="nav-link  active">
+                            (-home-) <span class="sr-only">(current)</span> </a>
+                    {% else %}
+                        <a href="{% url 'home' %}" class="nav-link">home</a>
+                    {% endif %}
+                </li>
+
+                <li class="nav-item">
+                    {% if request.path == memorial_list %}
+                        <a href="{% url 'memorials:list' %}" class="nav-link active">
+                            (-current memorials-) <span class="sr-only">(current)</span> </a>
+                    {% else %}
+                        <a href="{% url 'memorials:list' %}" class="nav-link">current memorials</a>
+                    {% endif %}
+                </li>
+
+                {% if request.user.is_authenticated %}
+                    <li class="dropdown nav-item">
+                        {% if not request.user.profile.image.url %}
+                            <a href="#paperp-kit" class="nav-link btn btn-just-icon btn-primary text-white"
+                               data-toggle="dropdown">
+                                {#                        <i class="nc-icon nc-sound-wave"></i>#}
+                                {{ request.user.get_user_initials }}
+                            </a>
+                        {% else %}
+                            <a href="#paperp-kit" class="nav-link" data-toggle="dropdown">
+                                <div class="profile-photo-small">
+                                    <img class="img-circle img-responsive img-no-padding"
+                                         src="{{ request.user.profile.image.url }}"
+                                         alt="{{ request.user.get_user_initials }}">
+                                </div>
+                            </a>
+                        {% endif %}
+                        <div class="dropdown-menu dropdown-menu-right dropdown-danger"
+                             aria-labelledby="navbarDropdownMenuLink1">
+{#                            <a class="dropdown-item" href="{% url 'wallets:fund_wallet' request.user.wallet.id %}">#}
+{#                                <i class="fa fa-money"></i> fund your wallet#}
+{#                            </a>#}
+                            <a class="dropdown-item"
+                               href="{% url 'profiles:profile_detail' request.user.profile.slug %}">
+                                <i class="fa fa-user-circle"></i> profile
+                            </a>
+                            <a class="dropdown-item" href="{% url 'memorials:create' %}">
+                                <i class="fa fa-plus"></i> upload a memorial
+                            </a>
+                            {% if request.user.is_superuser %}
+                                <a class="dropdown-item" href="/admin/">
+                                    <i class="fa fa-dashboard"></i> admin-dashboard
+                                </a>
+                            {% endif %}
+                            <a class="dropdown-item" href="{% url 'accounts:logout' %}">
+                                <i class="fa fa-sign-out"></i> logout
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="btn btn-just-icon btn-warning  " data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-bell"></i>
+                        </a>
+                        <span class="badge badge-pill badge-danger notification-bubble">
+                            {{ notifications.count }}
+                        </span>
+                        {% if notifications %}
+                            <ul class="dropdown-menu dropdown-menu-right dropdown-wide dropdown-notification">
+                                <li class="dropdown-header">
+                                    You have {{ notifications.count }} unread notifications
+                                </li>
+                                <li>
+                                    <ul id="notification-list" class="dropdown-notification-list scroll-area">
+                                        {% for n in notifications %}
+                                            <a
+                                                {% if n.notification_type == 1 %}
+                                                    href="javascript:;"
+                                                {% elif n.notification_type == 2 %}
+                                                    href="{% url 'memorials:detail' n.memorial_tribute.burial_memory.slug %}"
+                                                {% elif n.notification_type == 3 %}
+                                                    href="{% url 'memorials:detail' n.memorial_gallery.burial_memory.slug %}"
+                                                {% elif n.notification_type == 4 %}
+                                                    href="{% url 'memorials:detail' n.memorial_donation.burial_memory.slug %}"
+                                                {% endif %}
+                                               class="notification-item">
+                                                <div class="notification-text">
+                                                    <span class="badge badge-pill {% if n.notification_type == 1 %} badge-warning {% elif n.notification_type == 4 %} badge-success {% else %} badge-info {% endif %}">
+                                                        {% if n.notification_type == 1 %}
+                                                            <i class="fa fa-bank"></i>
+                                                        {% elif n.notification_type == 2 %}
+                                                            <i class="fa fa-envelope"></i>
+                                                        {% elif n.notification_type == 3 %}
+                                                            <i class="fa fa-image"></i>
+                                                        {% elif n.notification_type == 4 %}
+                                                            <i class="fa fa-money"></i>
+                                                        {% endif %}
+                                                    </span>
+                                                    <span class="message">
+                                                        {{ n.message }}
+                                                    </span>
+                                                    <br>
+                                                    <span class="time">{{ n.created_at|timesince }} ago</span>
+                                                    <button type="submit"
+                                                            hx-delete="{% url 'notifications:delete' n.pk %}"
+                                                            hx-target="#notification-list"
+                                                            hx-confirm="Are you sure you wish to delete?..."
+                                                            class="btn btn-just-icon read-notification btn-danger">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </a>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                                <li class="dropdown-footer">
+                                    <ul class="dropdown-footer-menu">
+                                        <li>
+                                            <a>{{ notifications.count }} remaining</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% else %}
+                    <li class="dropdown nav-item">
+                        <a href="#" class="nav-link" data-toggle="dropdown">account</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-danger"
+                             aria-labelledby="navbarDropdownMenuLink1">
+                            <a class="dropdown-item" href="{% url 'accounts:login' %}">
+                                <i class="fa fa-sign-in"></i> login
+                            </a>
+                            <a class="dropdown-item" href="{% url 'accounts:signup' %}">
+                                <i class="fa fa-user-plus"></i> register
+                            </a>
+                        </div>
+                    </li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- End Navbar -->

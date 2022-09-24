@@ -1,0 +1,66 @@
+{% url 'home' as home %}
+{% url 'accounts:login' as login %}
+{% url 'accounts:signup' as register %}
+
+{% if request.path == home or request.path == login or request.path == register %}
+    <div class="demo-footer text-center">
+        <h6>&copy;
+            <script>
+                document.write(new Date().getFullYear());
+            </script>
+            , made with <i class="fa fa-heart heart"></i> by <a href="https://www.geetechlab.com">Geetech Lab</a></h6>
+    </div>
+{% else %}
+    <footer class="footer footer-black footer-big">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 ml-auto mr-auto">
+                    <div class="logo text-center">
+                        <h3>adieulane.com</h3>
+                    </div>
+                </div>
+                <div class="col-md-6 offset-md-2 col-sm-8">
+                    <div class="links">
+                        <ul>
+                            <li>
+                                <a href="{% url 'home' %}">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'memorials:list' %}">
+                                    current memorials
+                                </a>
+                            </li>
+                        </ul>
+                        <hr/>
+                        <div class="copyright">
+                            <div class="pull-left">
+                                ©
+                                <script>
+                                    document.write(new Date().getFullYear())
+                                </script>
+                                , made with <i class="fa fa-heart heart"></i> by <a href="https://www.geetechlab.com">geetechlab</a>
+                            </div>
+                            <div class="pull-right">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            Terms
+                                        </a>
+                                    </li>
+                                    |
+                                    <li>
+                                        <a href="#">
+                                            Privacy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endif %}

@@ -1,0 +1,157 @@
+
+<!--// Card input widget //-->
+<div class="col-md-8 ml-auto mr-auto">
+
+    <div class="tick">
+        <span><i class="fa fa-check d-none"></i></span>
+        <p>Save card</p>
+    </div>
+
+    <button type="button" class="btn btn-primary btn-round" data-toggle="modal" data-target="#loginModal">
+        Pay with Card
+    </button>
+
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
+         aria-hidden="false">
+        <div class="modal-dialog modal-register">
+            <div class="modal-content">
+                <div class="modal-header no-border-header text-center">
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h6 class="text-muted">Create with your card</h6>
+{#                                                        <h3 class="modal-title text-center">Paper Kit</h3>#}
+{#                                                        <p>Log in to your account</p>#}
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row exp-cvv">
+                            <div class="input-group col-md-6 ml-auto mr-auto">
+                                <input
+                                    class="form-control"
+                                    type="text"
+                                    placeholder="mm/yy"
+                                    data-slots="my">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="input-group col-md-6 ml-auto mr-auto">
+                                <input
+                                    class="form-control"
+                                    type="text"
+                                    placeholder="000"
+                                    data-slots="0"
+                                    data-accept="\d"
+                                    size="3">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-info-circle"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="input-group">
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder="0000 0000 0000 0000"
+                                data-slots="0"
+                                data-accept="\d"
+                                size="19">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-credit-card"></i>
+                                    </span>
+                                </div>
+                        </div>
+                        <br/>
+                        <div class="form-group mt-25">
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder="Enter cardholder's full name">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="input-group col-md-6 ml-auto mr-auto">
+                                <input
+                                    class="form-control"
+                                    type="number"
+                                    placeholder="Donation amount">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-money"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="input-group col-md-6 ml-auto mr-auto">
+                                <select class="selectpicker " data-style="select-with-transition btn-primary btn-round" title="Select Currency" data-size="7">
+                                  <option value="NGN">Naira</option>
+                                  <option value="USD">Dollar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br/>
+                        <button class="btn btn-block btn-round" type="submit">Donate</button>
+                    </form>
+                </div>
+{#                                                    <div class="modal-footer no-border-footer">#}
+{#                                                        <span class="text-muted  text-center">Looking <a#}
+{#                                                                href="javascript:;">create an account</a> ?</span>#}
+{#                                                    </div>#}
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--// Card input widget //-->
+
+
+{% block ext_js %}
+    <script type="text/javascript">
+        var tick = document.querySelector(".tick span");
+        var tick_mark = document.querySelector(".tick span i");
+        tick.addEventListener('click', function () {
+
+            tick.classList.toggle('p-blue');
+            tick_mark.classList.toggle('d-none');
+        });
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            for (const el of document.querySelectorAll("[placeholder][data-slots]")) {
+                const pattern = el.getAttribute("placeholder"),
+                    slots = new Set(el.dataset.slots || "_"),
+                    prev = (j => Array.from(pattern, (c, i) => slots.has(c) ? j = i + 1 : j))(0),
+                    first = [...pattern].findIndex(c => slots.has(c)),
+                    accept = new RegExp(el.dataset.accept || "\\d", "g"),
+                    clean = input => {
+                        input = input.match(accept) || [];
+                        return Array.from(pattern, c =>
+                            input[0] === c || slots.has(c) ? input.shift() || c : c
+                        );
+                    },
+                    format = () => {
+                        const [i, j] = [el.selectionStart, el.selectionEnd].map(i => {
+                            i = clean(el.value.slice(0, i)).findIndex(c => slots.has(c));
+                            return i < 0 ? prev[prev.length - 1] : back ? prev[i - 1] || first : i;
+                        });
+                        el.value = clean(el.value).join``;
+                        el.setSelectionRange(i, j);
+                        back = false;
+                    };
+                let back = false;
+                el.addEventListener("keydown", (e) => back = e.key === "Backspace");
+                el.addEventListener("input", format);
+                el.addEventListener("focus", format);
+                el.addEventListener("blur", () => el.value === pattern && (el.value = ""));
+            }
+        });
+    </script>
+    <script type="text/javascript" src="{% static 'js/toastr.min.js' %}"></script>
+{% endblock %}

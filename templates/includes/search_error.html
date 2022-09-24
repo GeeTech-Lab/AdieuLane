@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+
+<body class="search-page sidebar-collapse">
+
+  <div class="wrapper">
+    <div class="main">
+      <div class="section section-white section-search">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-12 ml-auto mr-auto text-center">
+
+              {% include "includes/search.html" %}
+                <div class="info">
+                    <div class="icon icon-primary">
+                        <i class="fa fa-eye fa-3x"></i>
+                    </div>
+                    <div class="description">
+                        <h4 class="info-title"> Search not Found </h4>
+                        <p>Sorry we couldn't find what you were searching for...</p>
+                    </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+{% endblock %}

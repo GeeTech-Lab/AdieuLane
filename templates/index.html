@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block title %}home{% endblock %}
+
+{% block content %}
+
+    <div class="landing-page">
+        <div class="wrapper">
+            <div class="page-header" data-parallax="true"
+                 style="background-image: url('https://res.cloudinary.com/geetechlab-com/image/upload/v1659898814/nwaben.com/daddy_heaven_2_s6rhhr.jpg')">
+                <div class="filter"></div>
+                <div class="content-center">
+                    <!-- main website -->
+                    <div class="container">
+                        <div class="motto">
+                            <h3 class="title">Adieu Memory Lane(adieulane.com)</h3>
+                            {#              <h5 class="description">The Nwazuruoke NwaBen family <br>hails from Achina in Anambra state of Nigeria, West Africa.</h5>#}
+                            <h5 class="description">Let the memory of our loved ones<br> be with us forever</h5>
+                            <br/>
+                            <br/>
+                            {% if request.user.is_authenticated %}
+                                <a href="{% url 'memorials:list' %}" type="button"
+                                   class="btn btn-outline-neutral btn-round">Click to Get Started</a>
+                            {% else %}
+                                <a href="{% url 'accounts:signup' %}" type="button"
+                                   class="btn btn-outline-neutral btn-round">Click to Get Started</a>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                    <!-- main website ends -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block title %}404{% endblock %}
+{% block content %}
+    <!--     *********     HEADER 2      *********      -->
+    <div class="header-2">
+      <div class="page-header" style="background-image: url('#');">
+        <div class="filter"></div>
+        <div class="content-center">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 ml-auto mr-auto text-center">
+                <h1 class="title">Page 404</h1>
+                <h5 class="description">seems you visited the wrong page <br>
+                </h5>
+                <br />
+              </div>
+              <div class="col-md-10 ml-auto mr-auto">
+                <h5><a href="{% url 'home' %}">click here</a> to get back to home page</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--     *********    END HEADER 2      *********      -->
+{% endblock %}

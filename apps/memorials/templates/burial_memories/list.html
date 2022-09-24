@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block title %}Memory{% endblock %}
+
+{% block content %}
+
+<div class="about-us sidebar-collapse">
+
+    <div class="page-header page-header-small" style="background-image: url('https://res.cloudinary.com/geetechlab-com/image/upload/v1659898818/nwaben.com/daddy_heaven_3_m0xhos.jpg');">
+        <div class="filter filter-default"></div>
+        <div class="content-center">
+            <div class="container">
+                <h1>Hello, <br /> Create a Memorial Website</h1>
+                <h3>Preserve and share memories of your loved one</h3>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="section">
+            <div class="container">
+{#                <h3 class="title-uppercase">We build great products.</h3>#}
+{#                <p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</p>#}
+{#                <p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions. </p>#}
+{#                <h3 class="title-uppercase">We <i class="fa fa-heart heart"></i>&nbsp; what we do.</h3>#}
+{#                <p>Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>#}
+
+                <h2 class="text-center creators">Recent online memorials</h2>
+                <div class="row mt-5">
+                    {% for memory in memorials %}
+                        <div class="col-md-3 mt-5">
+                            <div class="card card-blog text-center">
+                                <div class="card-image">
+                                    <a href="{% url 'memorials:detail' memory.slug %}">
+                                        <img class="img img-fluid" style="height: 250px; width: 100%;" src="{{ memory.image_url }}" />
+                                    </a>
+                                </div>
+                                <div class="card-body">
+    {#                                <h6 class="card-category text-warning">Travel</h6>#}
+                                    <h6 class="card-title"><a href="{% url 'memorials:detail' memory.slug %}">{{ memory.get_name }}</a></h6>
+{#                                    <p class="card-description">{{ memory.burial_ceremony_address|truncatechars:10 }}</p>#}
+                                </div>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div class="col-md-12 mt-5">
+                            <div class="card card-blog">
+                              <div class="card-image">
+                                <a href="{% url 'memorials:create' %}">
+                                  <img class="card-img" src="https://res.cloudinary.com/geetechlab-com/image/upload/v1659898814/nwaben.com/daddy_heaven_2_s6rhhr.jpg">
+                                </a>
+                              </div>
+                              <div class="card-body text-center">
+                                <h4 class="card-title">
+                                  Make them to be remembered
+                                </h4>
+                                <div class="card-description">Click to get started to make your deceased loved ones remembered.</div>
+                                <div class="card-footer">
+                                  <a href="{% url 'memorials:create' %}" class="btn btn-danger btn-round">Get Started</a>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+{#                <h3 class="more-info">Need more information?</h3>#}
+{#                <div class="row coloured-cards">#}
+{#                    <div class="col-md-4 col-sm-6">#}
+{#                    <div class="card-big-shadow">#}
+{#                    <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">#}
+{#                    <div class="card-body">#}
+{#                    <h6 class="card-category">Best cards</h6>#}
+{#                    <h4 class="card-title"><a href="#paper-kit">Blue Card</a></h4>#}
+{#                    <p class="card-description">What all of these have in common is that they're pulling information out of the app or the service and making it relevant to the moment. </p>#}
+{#                    </div>#}
+{#                    </div>#}
+{#                    </div>#}
+{#                    </div>#}
+{#                </div>#}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

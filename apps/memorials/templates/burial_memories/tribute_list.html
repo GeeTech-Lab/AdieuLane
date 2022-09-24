@@ -1,0 +1,31 @@
+{% if tributes %}
+    {% for t in tributes %}
+        <div class="media">
+            <a class="pull-left">
+                <div class="avatar">
+                    {% if t.category == "candle" %}
+                        <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/48/000000/external-candles-pharmaceutical-flaticons-lineal-color-flat-icons-2.png"/>
+                    {% elif t.category == "flower" %}
+                        <img src="https://img.icons8.com/color/48/000000/bunch-flowers.png"/>
+                    {% elif t.category == "note" %}
+                        <img src="https://img.icons8.com/color/48/000000/scroll.png"/>
+                    {% endif %}
+                </div>
+            </a>
+            <div class="media-body">
+                <h5 class="media-heading">{{ t.by.get_full_name }}</h5>
+                <p>{{ t.tribute_text }}</p>
+                <h6 class="text-muted text-lowercase">{{ t.on|timesince }} ago</h6>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="info">
+        <div class="icon icon-primary">
+            <img class="pull-left" src="https://img.icons8.com/color/48/000000/funeral.png"/>
+        </div>
+        <div class="description">
+            <p>Write a tribute for the deceased.</p>
+        </div>
+    </div>
+{% endif %}

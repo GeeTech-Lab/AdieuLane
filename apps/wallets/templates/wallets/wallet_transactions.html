@@ -1,0 +1,12 @@
+
+{% for wt in wallet_transactions %}
+    <tr>
+        <td class="text-center">{{ wt.transaction_id }}</td>
+        <td>{{ wt.payment_status }}</td>
+        <td>{{ wt.created_at|date }}</td>
+        <td>{{ wt.created_at|time }}</td>
+        <td>{{ wt.currency }}</td>
+        <td class="text-right">{{ wt.amount }}</td>
+    </tr>
+{% endfor %}
+

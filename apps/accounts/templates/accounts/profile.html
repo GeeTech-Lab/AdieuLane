@@ -1,0 +1,311 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}{{request.user.username}}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/profile.css' %}" />
+<div class="section-title-page area-bg area-bg_dark area-bg_op_70">
+    <div class="area-bg__inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="b-title-page bg-primary_a">{{user.username}}'s Profile</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end .b-title-page-->
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <section class="container ng-scope ng-fadeInLeftShort" style="">
+                <!-- uiView:  -->
+                <div class="ng-fadeInLeftShort ng-scope" style="">
+                    <div class="container-overlap bg-primary ng-scope">
+                      <div class="media m0 pv">
+                        <div class="media-left"><a href="{% url 'accounts:profile_update' request.user.slug %}"><img src="{{user.image_url}}" alt="{{user.username}}" class="media-object img-circle thumb64"></a></div>
+                        <div class="media-body media-middle">
+                            {% if user.fname and user.lname %}
+                                <h4 class="media-heading text-white">{{user.fname}} {{user.lname}}</h4>
+                            {% else %}
+                                <h4 class="media-heading text-white">{{user.username}}</h4>
+                            {% endif %}
+{#                          <span class="text-white">Sed eget lacus quis diam molestie mollis.</span>#}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="container-fluid ng-scope">
+                      <div class="row">
+                        <!-- Left column-->
+                        <div class="col-md-7 col-lg-8">
+                          <form class="card ng-pristine ng-valid">
+                            <h5 class="card-heading pb0">
+                                About
+                            </h5>
+                            <div class="card-body">
+                              <p class="ng-scope ng-binding editable">
+                                  {% if user.bio %}
+                                    {{user.bio}}
+                                  {% else %}
+                                    {{user.username}} is yet to tell us about thy self...
+                                  {% endif %}
+                              </p>
+                            </div>
+                            <div class="card-divider"></div>
+                            <div class="card-offset">
+                              <div class="card-offset-item text-right">
+                                <a href="{% url 'accounts:profile_update' request.user.slug %}"  class="btn-raised btn btn-warning btn-circle btn-lg"><em class="fa fa-edit"></em></a>
+                              </div>
+                            </div>
+                            <h5 class="card-heading pb0">Contact Information</h5>
+                            <div class="card-body">
+                              <table class="table table-striped">
+                                <tbody>
+                                  <tr>
+                                    <td><em class="ion-ios-body icon-fw mr"></em>Member since</td>
+                                    <td><span class="ng-scope ng-binding editable">{{ user.date_joined }}</span></td>
+                                  </tr>
+                                  <tr>
+                                    <td><em class="ion-man icon-fw mr"></em>Gender</td>
+                                    <td><span class="ng-scope ng-binding editable">
+                                      {% if user.gender %}
+                                        {{user.gender}}
+                                      {% else %}
+                                        Empty
+                                      {% endif %}
+                                    </span></td>
+                                  </tr>
+                                  <tr>
+                                    <td><em class="ion-email icon-fw mr"></em>Email</td>
+                                    <td><span class="ng-scope editable">{{ user.email }}</span></td>
+                                  </tr>
+                                  <tr>
+                                    <td><em class="ion-ios-telephone icon-fw mr"></em>Contact phone</td>
+                                    <td><span class="ng-scope ng-binding editable">
+                                        {% if user.phone %}
+                                        {{user.phone}}
+                                      {% else %}
+                                        Empty
+                                      {% endif %}
+                                    </span></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </form>
+                        </div>
+                        <!-- Right column-->
+                        <div class="col-md-5 col-lg-4">
+                          <div class="card">
+                          {% if request.user.get_3_user_last_message %}
+                            <h5 class="card-heading">
+                                Last Message
+                            </h5>
+                            <div class="mda-list">
+                            {% for msg in request.user.get_3_user_last_message %}
+                              <div class="mda-list-item"><img src="{{ msg.msg_sender.image_url }}" alt="{{ msg.msg_sender.username }}" class="mda-list-item-img">
+                                <div class="mda-list-item-text mda-2-line">
+                                  <h3><a href="#">
+                                      {% if msg.msg_sender.fname and msg.msg_sender.lname %}
+                                          {{ msg.sender.get_full_name }}
+                                      {% else %}
+                                          {{ msg.sender.get_short_name }}
+                                      {% endif %}
+                                  </a></h3>
+                                  <div class="text-muted text-ellipsis">{{ msg.message }}</div>
+                                </div>
+                              </div>
+                            {% empty %}
+                              <div class="mda-list-item">
+                                <div class="mda-list-item-text mda-2-line">
+                                  <h3>No messages yet</h3>
+                                  <div class="text-muted text-ellipsis">message here...</div>
+                                </div>
+                              </div>
+                            {% endfor %}
+                            </div>
+                          {% endif %}
+                          {% if user.is_a_dealer %}
+                              <h5 class="card-heading">Wallet Details</h5>
+                              <div class="card-body pb0">
+                                  <p class="pull-left mr"><em class="ion-record text-info"></em></p>
+                                  <div class="oh">
+                                      <p>
+                                          Your wallet balance:<strong class="mr-sm">  {{ wallet.currency }}{{ wallet.balance|intcomma }}</strong><br>
+                                          <small><a href="{% url 'wallet:fund_wallet' wallet.uid %}">Fund your wallet now <i class="fa fa-money"></i></a></small>
+                                      </p>
+                                  </div>
+                              </div>
+                              <hr>
+                              <h5 class="card-heading">My cars for sale</h5>
+                              {% for c in my_cars %}
+                                <div class="card-body pb0">
+                                  <p class="pull-left mr"><em class="ion-record text-info"></em></p>
+                                  <div class="oh">
+                                    <p>
+                                        <strong class="mr-sm">{{ c.name }}</strong><span class="mr-sm"> {{ c.status }}</span>
+                                        <a href="{% url 'cars:detail' c.slug %}"><i class="fa fa-car"></i></a>
+                                    </p>
+                                  </div>
+                                </div>
+                              {% empty %}
+                                <div class="card-body pb0">
+                                  <p class="pull-left mr"><em class="ion-record text-info"></em></p>
+                                  <div class="oh">
+                                    <p><strong class="mr-sm">No car uploaded yet. </strong><a href="{% url 'cars:create' %}">upload car <i class="fa fa-car"></i></a></p>
+                                  </div>
+                                </div>
+                              {% endfor %}
+
+                          {% elif user.swap_car %}
+                            <h5 class="card-heading">My uploaded car for swap</h5>
+                            {% for sc in user.swap_car.all %}
+                                <div class="card-body pb0">
+                                  <p class="pull-left mr"><em class="ion-record text-info"></em></p>
+                                  <div class="oh">
+                                    <p>
+                                        <strong class="mr-sm">Car Name: {{ sc.get_car_swap_name }}</strong><br>
+                                        <span class="mr-sm">{{ sc.get_car_swap_address }}</span><br>
+                                        <a href=""> View More...</a>
+                                    </p>
+                                    <div class="clearfix">
+                                      <div class="pull-left text-muted"><em class="ion-android-time mr-sm"></em><span>Uploaded on: {{ sc.date }}</span></div>
+                                    </div>
+                                  </div>
+                                </div>
+                            {% empty %}
+                                <div class="card-body pb0">
+                                  <p class="pull-left mr"><em class="ion-record text-info"></em></p>
+                                  <div class="oh">
+                                    <p>
+                                        <strong class="mr-sm">
+                                            <a href="{% url 'cars:swap_create' %}">Upload your car for swap <i class="fa fa-car"></i></a>
+                                        </strong>
+                                    </p>
+                                  </div>
+                                </div>
+                            {% endfor %}
+                          {% endif %}
+                          {% if user.get_user_last_message_timestamp.timestamp %}
+                            <div class="card-body pb0">
+                              <p class="pull-left mr"><em class="ion-record text-success"></em></p>
+                                <div class="oh">
+                                    <p><strong class="mr-sm">Last message</strong><span> timestamp</span></p>
+                                    <div class="clearfix">
+                                      <div class="pull-left text-muted"><em class="ion-android-time mr-sm"></em><span>{{ user.get_user_last_message_timestamp.timestamp }}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                          {% endif %}
+{#                            <div class="card-body pb0">#}
+{#                              <p class="pull-left mr"><em class="ion-record text-info"></em></p>#}
+{#                              <div class="oh">#}
+{#                                <p><strong class="mr-sm">Published</strong><span class="mr-sm"> new photos on the album</span><a href="">WorldTrip</a></p>#}
+{#                                <p><a href=""><img src="https://via.placeholder.com/200x200" alt="Pic" class="mr-sm thumb48"></a>#}
+{#                                <a href=""><img src="https://via.placeholder.com/200x200" alt="Pic" class="mr-sm thumb48"></a>#}
+{#                                <a href=""><img src="https://via.placeholder.com/200x200" alt="Pic" class="mr-sm thumb48"></a></p>#}
+{#                                <div class="clearfix">#}
+{#                                  <div class="pull-left text-muted"><em class="ion-android-time mr-sm"></em><span>4 hours ago</span></div>#}
+{#                                </div>#}
+{#                              </div>#}
+{#                            </div>#}
+{#                            <div class="card-body">#}
+{#                              <div class="clearfix">#}
+{#                                <p class="pull-left mr"><em class="ion-record text-primary"></em></p>#}
+{#                                <div class="oh">#}
+{#                                  <p><strong class="mr-sm">Following</strong><span class="mr-sm">Jane Kuhn</span></p>#}
+{#                                  <p><span class="image-list"><a href=""><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User" class="img-circle thumb32"></a>#}
+{#                                  <a href=""><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="User" class="img-circle thumb32"></a>#}
+{#                                  <a href=""><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="User" class="img-circle thumb32"></a>#}
+{#                                  <a href=""><img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="User" class="img-circle thumb32"></a>#}
+{#                                  <a href=""><img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="User" class="img-circle thumb32"></a><strong><a href="" class="ml-sm link-unstyled">+200</a></strong></span></p>#}
+{#                                  <div class="clearfix">#}
+{#                                    <div class="pull-left text-muted"><em class="ion-android-time mr-sm"></em><span>yesterday</span></div>#}
+{#                                  </div>#}
+{#                                </div>#}
+{#                              </div>#}
+{#                            </div>#}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        {% if user.is_a_dealer %}
+            <div class="col-md-12">
+                <div class="table-container">
+                    <table class="table table_primary table-type-1">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Inspected</th>
+                                <th>Status</th>
+                                <th>Price</th>
+                                <th>Featured</th>
+                                <th>Condition</th>
+                                <th>Body</th>
+                                <th>Mileage</th>
+                                <th>Transmission</th>
+                                <th>Power</th>
+                                <th>Engine</th>
+    {#                                            <th>Seats</th>#}
+                                <th>Fuel</th>
+                                <th>Date Added</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for car in my_cars %}
+                            <tr>
+                                <td>{{ car.pk }}</td>
+                                <td>{{ car.get_car_name }}</td>
+                                <td class="text-center">
+                                    {% if car.car_inspection %}
+                                        <i class="text-success fa fa-check-circle"></i>
+                                    {% else %}
+                                        <i class="text-danger fa fa-times-circle"></i>
+                                    {% endif %}
+                                </td>
+                                <td class="text-center">{{ car.status }}</td>
+                                <td>₦{{ car.price|intcomma }}</td>
+                                <td class="text-center">
+                                    {% if car.is_featured %}
+                                        <i class="text-success fa fa-check-circle"></i>
+                                        {{ request.session.time_left }}
+                                    {% else %}
+{#                                        <a class="btn btn-primary btn-xs" href="{% url 'cars:detail' car.slug %}" type="button">Upgrade(₦500)</a>#}
+                                        <a class="btn btn-primary btn-xs" href="{% url 'cars:car_featuring' car.slug %}" type="button">Upgrade(₦500)</a>
+                                    {% endif %}
+                                </td>
+                                <td>{{ car.condition }}</td>
+                                <td>{{ car.body_type }}</td>
+                                <td>{{ car.mileage }}km</td>
+                                <td>{{ car.transmission }}</td>
+                                <td>{{ car.power }}hp</td>
+                                <td>{{ car.engine_size }}cc</td>
+    {#                                            <td>{{ car.number_of_seats }}</td>#}
+                                <td>{{ car.fuel }}</td>
+                                <td>{{ car.date }}</td>
+                                <td>
+                                    <a class="btn btn-primary btn-xs" href="{% url 'cars:delete' car.slug %}">
+                                       Delete <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% else %}
+        {% endif %}
+    </div>
+</div>
+<br>
+{% endblock %}

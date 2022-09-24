@@ -1,0 +1,208 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load humanize %}
+{% load currency %}
+
+{% block title %}My wallet{% endblock %}
+
+{% block content %}
+
+    <div class="profile-page sidebar-collapse">
+        <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('#');">
+            <br>
+            <br>
+            <h3 class="p-5 text-center text-white">Fund your wallet {{ wallet.user.username }}</h3>
+        </div>
+        <div class="wrapper">
+            <div class="profile-content section">
+                <div class="container">
+                    <div class="row">
+                        <div class="info">
+                            <div class="icon icon-primary">
+                                <i class="fa fa-piggy-bank"></i>
+                            </div>
+                            <div class="description">
+                                <h3 class="info-title"> My wallet details </h3>
+                                <h5 class="title">Balance: <b>
+                                    {{ wallet.currency }} {{ wallet.balance|currency:request.session.currency|intcomma }}</b></h5>
+                                <p class="title-brand">Wallet Address: <b>{{ wallet.uid }}</b></p>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="nav-tabs-navigation">
+                        <div class="nav-tabs-wrapper">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#fund_wallet" role="tab">
+                                        <i class="fa fa-money"></i>
+                                        Fund Wallet
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#wallet_transactions" role="tab">
+                                        <i class="fa fa-bank"></i>
+                                        My Transactions
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="fund_wallet" role="tabpanel">
+                                <div class="col-md-6 ml-auto mr-auto bg-dark p-4 rounded">
+                                    <h4 class="text-center text-white mb-3">Fund your wallet</h4>
+                                    <p class="text-warning mb-3 text-center"><i class="fa fa-info"></i> This is a secured payment channel.</p>
+
+                                    <form
+    {#                                    action="{% url 'wallets:fund_wallet' request.user.wallet.id %}"#}
+    {#                                    method="post">#}
+                                        hx-post="{% url 'wallets:fund_success' request.user.wallet.uid %}"
+                                        hx-target="#transaction_lists"
+                                        _="on htmx:afterRequest reset() me">
+                                        {% csrf_token %}
+                                        <br/>
+                                        <div class="form-row">
+                                            <div class="col-md-7 ml-auto mr-auto">
+                                                <div class="input-group">
+                                                    <input type="number" placeholder="0.00"
+                                                           class="form-control"
+                                                           id="wallet_amount" required>
+                                                    <div class="input-group-append">
+                                                    <span class="input-group-text">
+                                                    <i class="fa fa-money"></i>
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                                <small class="form-text text-muted text-info">
+                                                    <i class="fa fa-info"></i>
+                                                    Amount to fund your wallet
+                                                </small>
+                                            </div>
+                                            <div class="col-md-5 ml-auto mr-auto">
+                                                <div class="form-group">
+                                                    <input type="text" placeholder="0.00"
+                                                           class="form-control"
+                                                           id="wallet_currency"
+                                                           value="{{ request.session.currency }}"
+                                                            disabled>
+                                                    <small class="form-text text-muted text-info">
+                                                        <i class="fa fa-info"></i>
+                                                        <a href="{% url 'profiles:profile_detail' request.user.profile.slug %}">Click here</a> to change your currency
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <button
+                                                type="submit"
+                                                class="btn btn-block btn-round"
+                                                onclick="makePayment()">
+                                            <i class="fa fa-shield" aria-hidden="true"></i>
+                                            Fund wallet
+                                        </button>
+                                    </form>
+
+                                    <!-- using flutter wave  -->
+                                    <script src="https://checkout.flutterwave.com/v3.js"></script>
+                                    <script type="text/javascript">
+                                        function makePayment() {
+                                            let amount = document.getElementById("wallet_amount").value;
+                                            let currency = document.getElementById("wallet_currency").value;
+                                            FlutterwaveCheckout({
+                                                public_key: "{{ pub_key|safe }}",
+                                                tx_ref: '{{ request.user.username|safe }}_wallet_ref-' + Math.floor((Math.random() * 100000) + 1),
+                                                amount: amount,
+                                                currency: currency,
+                                                country: "{{ request.user.profile.country }}",
+                                                payment_options: "card, banktransfer, ussd, credit, barter",
+
+                                                // use customer details if user is not logged in, else add user_id to the request
+                                                customer: {
+                                                    email: "{{ request.user.email|safe }}",
+                                                    name: "{{ request.user.get_full_name|safe }}",
+                                                },
+                                                callback: function (response) {
+                                                    console.log(response);
+                                                    {#swal(response.status + "! your transaction ref is " + response.flw_ref);#}
+                                                    toastr.success(response.status + "! your transaction ref is \n" + response.flw_ref);
+                                                    $.ajax({
+                                                        url: "{% url 'wallets:fund_success' request.user.wallet.uid %}",
+                                                        method: "post",
+                                                        data: {
+                                                            'status': response.status,
+                                                            'currency': response.currency,
+                                                            'amount': response.amount,
+                                                            'tx_ref': response.tx_ref,
+                                                            'name': response.customer.name,
+                                                            'email': response.customer.email,
+                                                        },
+                                                        contentType: "application/x-www-form-urlencoded",
+                                                        success: function (data) {
+                                                            console.log(data);
+                                                            setTimeout(function () {
+                                                                window.location.replace("{% url 'profiles:profile_detail' request.user.profile.slug %}");
+                                                            });
+                                                            toastr.success(`Your ${currency}${amount} was received successfully and you wallet balance is updated.`);
+                                                        },
+                                                    });
+                                                },
+                                                onclose: function () {
+                                                    // close modal
+                                                    toastr.info('Window closed.');
+                                                },
+                                                customizations: {
+                                                    title: "Fund wallet",
+                                                    description: "Wallet funding for {{ request.user.get_full_name }}",
+                                                    logo: "{{ request.user.profile.image_url }}",
+                                                },
+                                            });
+                                        }
+                                    </script>
+                                </div>
+                        </div>
+
+                        <div class="tab-pane text-center" id="wallet_transactions" role="tabpanel">
+                            <div class="col-md-10 ml-auto mr-auto text-center">
+                                <h4 class="text-center title mt-5">My Latest transactions</h4>
+                                {% if wallet_transactions %}
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">#Transaction ID</th>
+                                            <th class="small">Status</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Currency</th>
+                                            <th class="text-right">Amount</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <div id="transaction_lists">
+                                                {% include 'wallets/wallet_transactions.html' %}
+                                            </div>
+                                        </tbody>
+                                    </table>
+                                {% else %}
+                                    <div class="info info-horizontal">
+                                        <div class="icon icon-warning">
+                                            <i class="fa fa-bank"></i>
+                                        </div>
+                                        <div class="description">
+                                            <h4 class="info-title"> No Transaction Yet </h4>
+                                            <p>You currently have not performed any transactions on your account fund
+                                                your wallet.</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

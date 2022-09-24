@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+
+<body class="search-page sidebar-collapse">
+
+  <div class="wrapper">
+    <div class="main">
+      <div class="section section-white section-search">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-12 ml-auto mr-auto text-center">
+                
+              {% include "includes/search.html" %}
+            {% for album in album_qs %}
+                <h6 class="text-muted">Album search result</h6>
+                <ul class="list-unstyled follows">
+                  <li>
+                  <div class="row">
+                    <div class="col-md-2 col-3">
+                      <img src="{{ album.album_logo }}" alt="{{ album.album_name }}" class="img-circle img-no-padding img-responsive">
+                    </div>
+                    <div class="col-md-6 col-4 description">
+                      <h5>{{ album.album_name }}<br>
+                        <small>{{ album.artist }} with <b>{{ album.album_songs }}</b> song{{ album.album_songs|pluralize }}.</small>
+                      </h5>
+                    </div>
+                      {% if request.user == is_superuser %}
+                        <div class="col-md-2 col-2">
+                            <form action="{% url 'archive:delete_album' album.slug%}" method="post">
+                                {% csrf_token %}
+                                <button class="btn btn-just-icon btn-round btn-outline-danger btn-tooltip" rel="tooltip" title="delete" type="submit"><i class="fa fa-trash-o"></i></button>
+                            </form>
+                        </div>
+                      {% endif %}
+                  </div>
+                </li>
+                </ul>
+            {% endfor %}
+
+            {% for song in song_qs %}
+                <h6 class="text-muted">Song search result</h6>
+                <ul class="list-unstyled follows">
+                  <li>
+                  <div class="row">
+                    <div class="col-md-2 col-3">
+                      <i class="fa fa-music"></i>
+                    </div>
+                    <div class="col-md-6 col-4 description">
+                      <h5>{{ song.song_title }}<br>
+                        <small>Track number - <b>{{ song.track_number }}</b> of {{ song.album }} album.</small>
+                      </h5>
+                    </div>
+                    {% if request.user == is_superuser %}
+                        <div class="col-md-2 col-2">
+                            <form action="{% url 'archive:delete_song' song.slug%}" method="post">
+                                {% csrf_token %}
+                                <button class="btn btn-just-icon btn-round btn-outline-danger btn-tooltip" rel="tooltip" title="delete" type="submit"><i class="fa fa-trash-o"></i></button>
+                            </form>
+                        </div>
+                    {% endif %}
+                  </div>
+                </li>
+                </ul>
+            {% endfor %}
+              <div class="text-missing">
+                <h5 class="text-muted">If you are not finding who you’re looking for try using small letters</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+{% endblock %}

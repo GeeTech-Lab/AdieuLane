@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block title %}messages{% endblock title %}
+
+
+{% block content %}
+<div class="section-title-page area-bg area-bg_dark area-bg_op_70">
+    <div class="area-bg__inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="b-title-page bg-primary_a">Login</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end .b-title-page-->
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- <div class="col-md-4">{{from user messages}}</div>
+            <br>
+            <div class="col-md-4 col-md-offset-4">{{my messages to user}}</div> -->
+            <p class="text-left">{{from user messages}}</p>
+            <p class="text-right">{{my messages to user}}</p>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <form>
+                <div class="form-group">
+                  <label for="exampleInput">Message .....</label>
+                  <textarea class="form-control" name="message" id="exampleInput" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block title %}login{% endblock %}
+
+{% block content %}
+    <div class="login-page full-screen sidebar-collapse">
+        <div class="wrapper">
+            <div class="page-header"
+                 style="background-image: url('https://res.cloudinary.com/geetechlab-com/image/upload/v1660091365/nwaben.com/daddy_candle_2_aljs2p.jpg');">
+                <div class="filter"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6 ml-auto mr-auto">
+                            <div class="card card-register bg-light">
+                                <h3 class="card-title text-dark">Welcome</h3>
+                                <form class="register-form" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="next" value="{{ request.GET.next }}" />
+                                    <label class="text-dark">Email</label>
+                                    <input type="email" name="email" class="form-control" placeholder="example@email.com">
+                                    <label class="text-dark">Password</label>
+                                    <input type="password" name="password" class="form-control" placeholder="********">
+                                    <button class="btn btn-default btn-block btn-round" type="submit">Login</button>
+                                </form>
+                                <div class="forgot">
+                                    <a href="..." class="btn btn-link btn-default">Forgot password?</a>
+                                    <a href="{% url 'accounts:signup' %}" class="btn btn-link btn-default">Register</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

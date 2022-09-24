@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}{{request.user.username}}{% endblock %}
+
+{% block content %}
+
+<div class="section-title-page area-bg area-bg_dark area-bg_op_70">
+    <div class="area-bg__inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="b-title-page bg-primary_a">Update Profile</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end .b-title-page-->
+<br>
+<div class="container">
+    <div class="col-md-12">
+        {% include 'includes/messages.html' %}
+        <form class="ui-form-3" method="POST" enctype="multipart/form-data" action="">
+            {% csrf_token %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h3>Update profile</h3>
+                        <p class="section-form-contacts__info">
+                            Please update your details...
+                        </p>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="form-group">
+                            <label for="exampleInputFile">Upload you image</label>
+                            {% render_field form.avatar class="form-control-file" %}
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="form-group">
+                            <input class=form-control type="text" class="form-control" value="{{user.username}}" disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="form-group">
+                            <input class=form-control type="email" class="form-control" value="{{user.email}}" disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="form-group">
+                            {% render_field form.fname class="form-control" placeholder="First Name"%}
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="form-group">
+                            {% render_field form.lname class="form-control" placeholder="Last Name"%}
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="form-group">
+                            {% render_field form.phone class="form-control" placeholder="+234801234567"%}
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="form-group">
+                            {% render_field form.gender class="form-control" placeholder="Select Gender"%}
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="form-group">
+                            {% render_field form.bio class="form-control" placeholder="Tell us more about your self" rows=3 %}
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit">Update Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<br>
+{% endblock %}

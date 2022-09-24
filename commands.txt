@@ -1,0 +1,7 @@
+py manage.py makemigrateions --dry-run --verbosity 3
+pip install coverage
+coverage run --omit='*/ascons_venv/*' manage.py test
+coverage html
+pip install djangorestframework
+
+run on cmd Set-ExecutionPolicy Unrestricted -Scope Process

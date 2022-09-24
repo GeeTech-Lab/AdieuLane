@@ -1,0 +1,187 @@
+{% load widget_tweaks %}
+
+<div class="content-center">
+    <div class="container">
+        {% if request.user.is_authenticated %}
+            <div class="row justify-content-end mb-5">
+                <button type="button" class="btn btn-move-right btn-round" data-toggle="modal"
+                        data-target="#imageFormModal">
+                    <i class="fa fa-image"></i> Upload Media
+                </button>
+            </div>
+            <br>
+        {% else %}
+            <div class="row justify-content-end mb-5">
+                <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-round" type="button">
+                    <i class="fa fa-upload"></i> upload
+                </a>
+            </div>
+            <br>
+        {% endif %}
+        {% if galleries %}
+            <!-- Root element of PhotoSwipe. Must have class pswp. -->
+            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+                <!-- Background of PhotoSwipe.
+                         It's a separate element as animating opacity is faster than rgba(). -->
+                <div class="pswp__bg"></div>
+
+                <!-- Slides wrapper with overflow:hidden. -->
+                <div class="pswp__scroll-wrap">
+
+                    <!-- Container that holds slides.
+                            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                            Don't modify these 3 pswp__item elements, data is added later on. -->
+                    <div class="pswp__container">
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                    </div>
+
+                    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+                    <div class="pswp__ui pswp__ui--hidden">
+
+                        <div class="pswp__top-bar">
+
+                            <!--  Controls are self-explanatory. Order can be changed. -->
+
+                            <div class="pswp__counter"></div>
+
+                            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                            <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                            <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                            <!-- element will get class pswp__preloader--active when preloader is running -->
+                            <div class="pswp__preloader">
+                                <div class="pswp__preloader__icn">
+                                    <div class="pswp__preloader__cut">
+                                        <div class="pswp__preloader__donut"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                            <div class="pswp__share-tooltip"></div>
+                        </div>
+
+                        <button class="pswp__button pswp__button--arrow--left"
+                                title="Previous (arrow left)"></button>
+
+                        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+                        <div class="pswp__caption">
+                            <div class="pswp__caption__center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Main image gallery -->
+            <div id="image_list" class="my-gallery image_list" itemscope itemtype="http://schema.org/ImageGallery">
+                <div class="row">
+                    {% for g in galleries %}
+                        {% if g.image %}
+                            <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"
+                                    class="col-md-3 col-sm-4 gallery-item">
+                                <a href="{{ g.image_url }}"
+                                   itemprop="contentUrl"
+                                   data-size="750x1002">
+                                    <img src="{{ g.image_url }}"
+                                         style="width: 200px; height: 200px"
+                                         itemprop="thumbnail"
+                                         alt="image memory"
+                                         class="vertical-image img-rounded img-responsive"/>
+                                </a>
+                                <figcaption itemprop="caption description" class="gallery-caption">
+                                    {{ g.description }}
+                                </figcaption>
+                            </figure>
+                        {% endif %}
+                        {% if g.video %}
+                            <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"
+                                    class="col-md-3 col-sm-4 gallery-item">
+                                <a href="{{ g.video }}"
+                                    itemprop="contentUrl"
+                                    data-size="750x1002">
+                                    <div class="iframe-container">
+                                        <iframe src="{{ g.video }}"
+                                            frameborder="0" allowfullscreen height="200" width="200"></iframe>
+                                    </div>
+                                </a>
+                                <figcaption itemprop="caption description" class="gallery-caption">
+                                    {{ g.description }}
+                                </figcaption>
+                            </figure>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+        {% else %}
+            <div class="info">
+                <div class="icon icon-primary">
+                    <i class="fa fa-image"></i>
+                </div>
+                <div class="description">
+                    <h4 class="info-title"> Upload memorial photos of {{ memorial.get_name }} </h4>
+                    <p>Please add the images/albums of {{ memorial.get_name }} and leave details of each photos you upload.</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Upload image modal -->
+<div class="modal fade" id="imageFormModal" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog modal-register">
+        <div class="modal-content">
+            <div class="modal-header no-border-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h6 class="text-muted">add a media</h6>
+            </div>
+            <div class="modal-body">
+                <form
+                    method="post"
+                    action="{% url 'memorials:add_gallery_v2' memorial.slug %}"
+                    enctype="multipart/form-data"
+                    _="on htmx:afterRequest reset() me then on submit toggle @disabled on <button /> until htmx:afterOnLoad then put '' into #field_val's value">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="text-primary">Upload image file</label>
+{#                        <input id="max_id" type="hidden" name="MAX_FILE_SIZE" value="30000000"/>#}
+                        <input type="file" id="field_val" name="memory_image" accept="image/*" class="input-group"/>
+{#                        {{ form.image|attr:"class:input-group"|attr:"id:file_id"|attr:"type:file"|attr:"accept:image/*"|attr:"onchange:upload_check()" }}#}
+                        <small>Maximum image size 3mb</small>
+                    </div>
+                    <div class="title text-center mt-2 mb-2 text-primary">OR</div>
+                    <div class="form-group">
+                        <label class="text-primary"><i class="fa fa-youtube fa-2x mr-3"></i>Upload video link</label>
+                        <input class="form-control" type="url" name="memory_video" placeholder="youtube link here..."/>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label class="text-primary">Media description</label>
+                        <textarea
+                            placeholder="Write details/summary of this Image(s)"
+                            class="form-control"
+                            name="description"
+                            id="field_val"
+                            rows="3">
+                        </textarea>
+                    </div>
+                    <button
+                        type="submit"
+                        class="btn btn-block btn-round">
+                        <i class="fa fa-upload"></i> upload
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+{% load widget_tweaks %}
+{% load humanize %}
+{% load currency %}
+
+{% block title %}Create{% endblock %}
+
+{% block content %}
+<div class="page-header page-header-xs" data-parallax="true" style="background-image: url('#');">
+<br>
+<br>
+<br>
+<br>
+<h3 class="mt-10 text-center text-white">Create a Memorial</h3>
+<br>
+<h5 style="color: white" class="text-center">Please fill in the required fields about the deceased.</h5>
+</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-plain">
+                  <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label>Title</label>
+                          {% render_field form.title class="form-control" placeholder=form.title.help_text %}
+                      </div>
+                      <div class="form-group">
+                        <label>First Name</label>
+                          {% render_field form.first_name class="form-control" placeholder=form.first_name.help_text %}
+                      </div>
+                      <div class="form-group">
+                        <label>Last Name</label>
+                          {% render_field form.last_name class="form-control" placeholder=form.last_name.help_text %}
+                      </div>
+                      <div class="form-group">
+                        <label>Other Names</label>
+                          {% render_field form.other_names class="form-control" placeholder=form.other_names.help_text %}
+                      </div>
+                      <div class="form-group">
+                        <label>Image</label>
+                          {% render_field form.image class="form-control" placeholder=form.image.help_text %}
+                      </div>
+                      <div class="form-group">
+                        <label>Gender</label>
+                          {% render_field form.gender class="form-control" placeholder=form.gender.help_text %}
+                      </div>
+                      <div class="form-group">
+                        <label>Date of Birth</label>
+                          {% render_field form.date_of_birth class="form-control datetimepicker" type="date" placeholder=form.date_of_birth.help_text %}
+                      </div>
+                      <div class="form-group">
+                        <label>Date of Death</label>
+                        {% render_field form.date_of_death class="form-control datetimepicker" type="date" placeholder=form.date_of_death.help_text %}
+                      </div>
+                      <div class="form-group">
+                        <label>Place of Death</label>
+                          {% render_field form.place_of_death class="form-control" placeholder=form.place_of_death.help_text %}
+                      </div>
+                      <div class="form-group">
+                        <label>Place of Birth</label>
+                          {% render_field form.place_of_birth class="form-control" placeholder=form.place_of_birth.help_text %}
+                      </div>
+                      <div class="form-group">
+                        <label>Burrial Address</label>
+                          {% render_field form.burial_ceremony_address class="form-control" placeholder=form.burial_ceremony_address.help_text %}
+                      </div>
+                      <div class="form-group">
+                        <label>Cause of Death</label>
+                          {% render_field form.cause_of_death class="form-control" placeholder=form.cause_of_death.help_text %}
+                      </div>
+                      <div class="form-group">
+                        <label>Biography</label>
+                          {% render_field form.brief_biography class="form-control" placeholder=form.brief_biography.help_text %}
+                      </div>
+                      <div class="form-group">
+                        <label>Education</label>
+                          {% render_field form.education class="form-control" placeholder=form.education.help_text %}
+                      </div>
+                      <div class="form-group">
+                        <label>Work Life</label>
+                          {% render_field form.work_life class="form-control" placeholder=form.work_life.help_text %}
+                      </div>
+                      <div class="form-group">
+                        <label>Family Biography</label>
+                          {% render_field form.family_biography class="form-control" placeholder=form.family_biography.help_text %}
+                      </div>
+                      <div class="form-group">
+                        <label>Burial ceremony address:</label>
+                          {% render_field form.burial_ceremony_address class="form-control" placeholder=form.burial_ceremony_address.help_text %}
+                      </div>
+
+                      <div class="form-group">
+                        <label> Do you wish to activate donation for this memorial?...
+                            <input type="checkbox" value="toggle_donation" name="toggle_donation" data-toggle="switch" data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-remove'></i>" data-on-color="success" data-off-color="success">
+                            <span class="toggle"></span>
+                        </label>
+                      </div>
+                      <button type="submit" class="mt-3 btn bg-gradient-info w-100">
+                          <i class="fa fa-shield"></i> Pay <b>({{ request.session.currency }}{{ upload_price|currency:request.session.currency|intcomma }})</b> to Upload Memorial
+                      </button>
+                    </form>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+{% endblock %}
