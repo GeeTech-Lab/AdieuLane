@@ -19,14 +19,14 @@ class MyAdmin(UserAdmin):
     # that reference specific fields on auth.User.
     list_display = ('username', 'email', 'date_joined', 'is_staff', 'is_active',)
     list_display_links = ["username"]
-    list_filter = ('email', 'first_name', 'last_name', 'is_staff', 'date_joined',)
+    list_filter = ('email', 'full_name', 'is_staff', 'date_joined',)
     fieldsets = (
         (
             _("Login Credentials"),
             {'fields': ('email', 'password',)}
         ),
         (
-            _('Personal info'), {'fields': ('username', 'first_name', 'last_name',)}
+            _('Personal info'), {'fields': ('username', 'full_name', 'phone',)}
         ),
         (
             _('Permissions and Groups'),
@@ -45,10 +45,10 @@ class MyAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'email', 'first_name', 'last_name', 'password', 'password2', 'is_staff', 'is_active')}
+            'fields': ('username', 'email', 'full_name', 'phone', 'password', 'password2', 'is_staff', 'is_active')}
          ),
     )
-    search_fields = ('username', 'email', 'first_name', 'last_name',)
+    search_fields = ('username', 'email', 'full_name', 'phone',)
     filter_horizontal = ()
 
 
