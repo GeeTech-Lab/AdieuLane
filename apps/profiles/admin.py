@@ -7,7 +7,6 @@ class ProfileAdmin(admin.ModelAdmin):
         'id',
         'slug',
         'gender',
-        'phone',
         'country',
         'city'
     ]
