@@ -5,7 +5,7 @@ from .models import User
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm):
         model = User
-        fields = ["email", "username", "first_name", "last_name", "password", "password2"]
+        fields = ["email", "username", "first_name", "last_name", "phone", "password", "password2"]
         error_class = "error"
 
 

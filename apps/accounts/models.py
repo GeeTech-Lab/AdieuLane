@@ -3,9 +3,8 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 from django.dispatch import receiver
 from django.db.models.signals import post_save, post_delete, pre_save, pre_delete
 from django.utils import timezone
-
+from phonenumber_field.modelfields import PhoneNumberField
 from adieulane.utils import unique_slug_generator
-import uuid
 from .managers import CustomUserManager
 from django.utils.translation import gettext_lazy as _
 
@@ -20,8 +19,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(verbose_name=_("Email"), unique=True)
     username = models.CharField(verbose_name=_("Username"), max_length=40, unique=True)
     slug = models.SlugField(unique=True, )
-    first_name = models.CharField(verbose_name=_("First Name"), max_length=20, blank=True, null=True)
-    last_name = models.CharField(verbose_name=_("Last Name"), max_length=20, blank=True, null=True)
+    full_name = models.CharField(verbose_name=_("First&Last Name"), max_length=20, blank=True, null=True)
+    phone = PhoneNumberField(verbose_name=_("Phone Number"), max_length=14, unique=True, blank=True, null=True)
     date_joined = models.DateTimeField(default=timezone.now)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -29,7 +28,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
+    REQUIRED_FIELDS = ['username', 'first_name', 'last_name', 'phone']
 
     class Meta:
         verbose_name_plural = _("Users")

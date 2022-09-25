@@ -39,6 +39,40 @@ def check_email(request):
     return HttpResponse("<small class='text-success'>Email is available.</small>")
 
 
+def check_phone(request):
+    phone = request.POST.get('phone')
+    print(f"Checking Phone {phone}")
+    if "+" not in phone:
+        return HttpResponse("<small class='text-danger'>Please affix country code on your phone number eg(+2348031234567)</small>")
+    if len(phone) > 11:
+        return HttpResponse("<small class='text-danger'>Invalid phone number</small>")
+    if User.objects.filter(phone=phone).exists():
+        return HttpResponse("<small class='text-danger'>Sorry phone number already in use.</small>")
+    return HttpResponse("<small class='text-success'>Phone number is available.</small>")
+
+
+# class SelectCountryCurrency(View):
+#     def post(self, request, slug):
+#         data = json.loads(request.body)
+#         country = data["countryVal"]
+#         print(f"country from frontend {country}")
+#         profile = Profile.objects.get(slug=slug)
+#         wallet = Wallet.objects.get(user=profile.user)
+#         if country == "NG":
+#             wallet.currency = "NGN"
+#             wallet.save()
+#             print("currency saved...")
+#             messages.success(request, "currency updated successfully...")
+#             return redirect("profiles:profile_detail", profile.slug)
+#         # ELSE assign US Dollars...
+#         wallet.currency = "USD"
+#         wallet.balance = wallet.balance/0.0014
+#         wallet.save()
+#         print("currency saved...")
+#         messages.success(request, "currency updated successfully...")
+#         return redirect("profiles:profile_detail", profile.slug)
+
+
 def check_password(request):
     password = request.POST.get('password')
     password2 = request.POST.get('password2')

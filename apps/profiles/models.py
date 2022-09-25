@@ -3,8 +3,6 @@ from cloudinary.models import CloudinaryField
 from django.db import models
 from django.urls import reverse
 from django_countries.fields import CountryField
-from phonenumber_field.modelfields import PhoneNumberField
-
 from apps.common.models import TimeStampedUUIDModel
 from django.utils.translation import gettext_lazy as _
 from apps.accounts.models import User
@@ -19,7 +17,6 @@ class Gender(models.TextChoices):
 class Profile(TimeStampedUUIDModel):
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
     slug = AutoSlugField(populate_from='user', unique=True, always_update=True)
-    phone = PhoneNumberField(verbose_name=_("Phone Number"), max_length=14, unique=True, blank=True, null=True)
     gender = models.CharField(verbose_name=_("Gender"), max_length=20, choices=Gender.choices, default=Gender.OTHER)
     bio = models.TextField(verbose_name=_("About me"), default="Say something about yourself")
     image = CloudinaryField(
@@ -46,19 +43,6 @@ class Profile(TimeStampedUUIDModel):
         if self.image:
             return self.image.url
         return 'https://res.cloudinary.com/geetechlab-com/image/upload/v1583147406/nwaben.com/user_azjdde_sd2oje.jpg '
-
-    # def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
-    #     profile_instance = self.user
-    #     get_current_currency = Wallet.objects.get(user=profile_instance)
-    #     try:
-    #         if profile_instance.profile.country == "NG":
-    #             get_current_currency.currency = "NGN"
-    #             get_current_currency.save()
-    #     except ModuleNotFoundError:
-    #         get_current_currency.currency = None
-    #         get_current_currency.save()
-    #         get_current_currency.refresh_from_db()
-    #     super(Profile, self).save()
 
 
 # class UserPreference(models.Model):

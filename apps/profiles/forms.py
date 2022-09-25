@@ -10,11 +10,8 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = (
             "image",
-            "phone",
             "gender",
             "birth_day",
             "bio",
-            "country",
             "city",
-            "currency",
         )

@@ -1,13 +1,10 @@
 import logging
 import uuid
-
-from currencies.models import Currency
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
 from adieulane.settings import AUTH_USER_MODEL
-from apps.accounts.models import User
 from apps.common.models import TimeStampedUUIDModel
 from apps.notifications.models import Notification
 
@@ -41,7 +38,8 @@ class Wallet(models.Model):
 @receiver(post_save, sender=AUTH_USER_MODEL)
 def create_user_wallet(sender, instance, created, **kwargs):
     if created:
-        Wallet.objects.create(user=instance)
+        currency = "NGN" if instance.profile.country == "NG" else "USD"
+        Wallet.objects.create(user=instance, currency=currency)
 
 
 @receiver(post_save, sender=AUTH_USER_MODEL)
