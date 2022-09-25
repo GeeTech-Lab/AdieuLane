@@ -91,8 +91,7 @@ class RegistrationView(View):
         # get user data
         username = request.POST.get('username')
         email = request.POST.get('email')
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
+        full_name = request.POST.get('full_name')
         password = request.POST.get('password')
         password2 = request.POST.get('password2')
 
@@ -112,8 +111,7 @@ class RegistrationView(View):
                 user = User.objects.create_user(
                     username=username,
                     email=email,
-                    first_name=first_name,
-                    last_name=last_name,
+                    full_name=full_name,
                     password=make_password(password)
                 )
                 user.set_password(password)

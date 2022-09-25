@@ -28,7 +28,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name', 'phone']
+    REQUIRED_FIELDS = ['username', 'full_name', 'phone']
 
     class Meta:
         verbose_name_plural = _("Users")
@@ -39,7 +39,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     @property
     def get_full_name(self):
-        return f"{self.first_name.title()} {self.last_name.title()}"
+        return f"{self.full_name.title()}"
 
     @property
     def get_short_name(self):
@@ -51,7 +51,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     @property
     def get_user_initials(self):
-        return f"{self.first_name.title()[0:1]}{self.last_name.title()[0:1]}"
+        return f"{self.full_name.title()[0:1]}"
 
 
 @receiver(pre_save, sender=User)
