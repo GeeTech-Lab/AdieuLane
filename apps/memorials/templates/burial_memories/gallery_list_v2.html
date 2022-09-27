@@ -2,19 +2,12 @@
 
 <div class="content-center">
     <div class="container">
-        {% if request.user.is_authenticated %}
+        {% if request.user == memorial.user %}
             <div class="row justify-content-end mb-5">
                 <button type="button" class="btn btn-move-right btn-round" data-toggle="modal"
                         data-target="#imageFormModal">
                     <i class="fa fa-image"></i> Upload Media
                 </button>
-            </div>
-            <br>
-        {% else %}
-            <div class="row justify-content-end mb-5">
-                <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-round" type="button">
-                    <i class="fa fa-upload"></i> upload
-                </a>
             </div>
             <br>
         {% endif %}

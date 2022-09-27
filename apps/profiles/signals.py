@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 @receiver(post_save, sender=AUTH_USER_MODEL)
 def create_user_profile(sender, instance, created, **kwargs):
-    phone = get_phone_country(instance.phone)
+    phone = get_phone_country(f"{instance.phone}")
     if created:
         Profile.objects.create(user=instance, country=phone)
 

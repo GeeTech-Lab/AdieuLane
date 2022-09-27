@@ -2,7 +2,10 @@ import json
 import random
 import smtplib
 import string
+from json import JSONDecodeError
+
 import phonenumbers
+from django.db.models import F
 from phonenumbers import geocoder, region_code_for_country_code
 from requests.exceptions import ConnectionError
 import requests
@@ -60,6 +63,14 @@ def exchange_rate(instance, price, rate, currency):
     return upload_price
 
 
+def debit_wallet(instance, price):
+    if instance.balance >= price:
+        instance.balance = F('balance') - price
+        instance.save()
+        return True
+    return False
+
+
 def list_bank_names(country, public_key):
     try:
         url = f"https://api.flutterwave.com/v3/banks/{country}?public_key={public_key}"
@@ -68,7 +79,7 @@ def list_bank_names(country, public_key):
         response = requests.request("GET", url, headers=headers, data=payload)
         banks = json.loads(response.text)
         return [b["name"] for b in banks["data"]]
-    except ConnectionError as e:
+    except Exception as e:
         print(e)
         return None
 

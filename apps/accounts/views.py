@@ -44,7 +44,7 @@ def check_phone(request):
     print(f"Checking Phone {phone}")
     if "+" not in phone:
         return HttpResponse("<small class='text-danger'>Please affix country code on your phone number eg(+2348031234567)</small>")
-    if len(phone) > 11:
+    if len(phone) > 14:
         return HttpResponse("<small class='text-danger'>Invalid phone number</small>")
     if User.objects.filter(phone=phone).exists():
         return HttpResponse("<small class='text-danger'>Sorry phone number already in use.</small>")
@@ -92,6 +92,7 @@ class RegistrationView(View):
         username = request.POST.get('username')
         email = request.POST.get('email')
         full_name = request.POST.get('full_name')
+        phone = request.POST.get('phone')
         password = request.POST.get('password')
         password2 = request.POST.get('password2')
 
@@ -112,6 +113,7 @@ class RegistrationView(View):
                     username=username,
                     email=email,
                     full_name=full_name,
+                    phone=phone,
                     password=make_password(password)
                 )
                 user.set_password(password)

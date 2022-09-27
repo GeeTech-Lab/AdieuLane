@@ -24,7 +24,7 @@
                             <div class="description">
                                 <h3 class="info-title"> My wallet details </h3>
                                 <h5 class="title">Balance: <b>
-                                    {{ wallet.currency }} {{ wallet.balance|currency:request.session.currency|intcomma }}</b></h5>
+                                    {{ wallet.currency }} {{ wallet.balance|intcomma }}</b></h5>
                                 <p class="title-brand">Wallet Address: <b>{{ wallet.uid }}</b></p>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                                                     <input type="text" placeholder="0.00"
                                                            class="form-control"
                                                            id="wallet_currency"
-                                                           value="{{ request.session.currency }}"
+                                                           value="{{ wallet.currency }}"
                                                             disabled>
                                                     <small class="form-text text-muted text-info">
                                                         <i class="fa fa-info"></i>

@@ -51,7 +51,7 @@
                 <input type="text" name="username" placeholder="Jonny123" class="form-control" hx-post="/accounts/check_username/" hx-trigger="keyup" hx-target="#username-error" required>
                 <input type="email" name="email" placeholder="example@email.com" class="form-control" hx-post="/accounts/check_email/" hx-trigger="keyup" hx-target="#email-error" required>
                 <input type="text" name="full_name" placeholder="John Ezeh" class="form-control" required>
-                <input type="tel" name="phone" placeholder="+2348012345678" class="form-control" hx-post="/profiles/check_phone/" hx-trigger="keyup" hx-target="#phone-error" required>
+                <input type="tel" name="phone" placeholder="+2348012345678" class="form-control" hx-post="/accounts/check_phone/" hx-trigger="keyup" hx-target="#phone-error" required>
                 <input type="password" name="password" placeholder="********" class="form-control" id="password-input" required>
                 <input type="password" name="password2" placeholder="********" class="form-control" id="password-input" hx-post="/accounts/check_password/" hx-trigger="keyup" hx-target="#password-error" required>
                 <button class="btn btn-block btn-round" type="submit">Register</button>

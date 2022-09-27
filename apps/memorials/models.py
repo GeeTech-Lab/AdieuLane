@@ -222,7 +222,7 @@ class MemoryTribute(models.Model):
 @receiver(post_save, sender=MemoryTribute)
 def user_add_tribute_notification(sender, instance, *args, **kwargs):
     tribute = instance
-    sender = tribute.user
+    sender = tribute.by
     message = f"{sender.username.title()} just added a tribute for {tribute.burial_memory.get_name}"
     notify = Notification(
         memorial_tribute=tribute,

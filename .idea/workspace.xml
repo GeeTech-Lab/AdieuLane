@@ -2,8 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5f8b045-d715-4680-83bb-49c1aee78987" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/apps/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/accounts/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adieulane/settings/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/adieulane/settings/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adieulane/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/adieulane/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/accounts/templates/accounts/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/accounts/templates/accounts/signup.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/accounts/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/memorials/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/memorials/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/memorials/templates/burial_memories/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/memorials/templates/burial_memories/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/memorials/templates/burial_memories/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/memorials/templates/burial_memories/form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/memorials/templates/burial_memories/gallery_list_v2.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/memorials/templates/burial_memories/gallery_list_v2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/memorials/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/memorials/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/memorials/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/memorials/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/profiles/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/profiles/templates/profiles/forms.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/templates/profiles/forms.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/profiles/templates/profiles/me.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/templates/profiles/me.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/wallets/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/wallets/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/wallets/templates/wallets/fund_wallet.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/wallets/templates/wallets/fund_wallet.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,14 +33,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/apps/accounts/views.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/adieulane/settings/local.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1671">
-              <caret line="113" column="40" selection-start-line="113" selection-start-column="40" selection-end-line="113" selection-end-column="40" />
+            <state relative-caret-position="24">
+              <caret line="3" selection-start-line="3" selection-end-line="14" selection-end-column="1" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#0#17#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/adieulane/settings/base.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="145" column="79" selection-start-line="145" selection-start-column="79" selection-end-line="145" selection-end-column="79" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -68,7 +106,6 @@
       <list>
         <option value="$PROJECT_DIR$/templates/includes/success.html" />
         <option value="$PROJECT_DIR$/apps/memorials/templates/burial_memories/gallery_list.html" />
-        <option value="$PROJECT_DIR$/apps/memorials/templates/burial_memories/gallery_list_v2.html" />
         <option value="$PROJECT_DIR$/apps/wallets/templates/wallets/fund_wallet_success.html" />
         <option value="$PROJECT_DIR$/apps/notifications/admin.py" />
         <option value="$PROJECT_DIR$/apps/notifications/templates/notifications/notification_list.html" />
@@ -77,53 +114,53 @@
         <option value="$PROJECT_DIR$/apps/memorials/templates/burial_memories/list.html" />
         <option value="$PROJECT_DIR$/apps/common/models.py" />
         <option value="$PROJECT_DIR$/apps/wallets/templates/wallets/wallet_transactions.html" />
-        <option value="$PROJECT_DIR$/templates/layout.html" />
         <option value="$PROJECT_DIR$/apps/notifications/views.py" />
         <option value="$PROJECT_DIR$/apps/wallets/admin.py" />
         <option value="$PROJECT_DIR$/apps/donations/admin.py" />
         <option value="$PROJECT_DIR$/apps/donations/forms.py" />
         <option value="$PROJECT_DIR$/apps/memorials/forms.py" />
-        <option value="$PROJECT_DIR$/apps/memorials/urls.py" />
         <option value="$PROJECT_DIR$/apps/memorials/admin.py" />
         <option value="$PROJECT_DIR$/apps/donations/urls.py" />
         <option value="$PROJECT_DIR$/adieulane/flutterwave.py" />
         <option value="$PROJECT_DIR$/apps/donations/models.py" />
-        <option value="$PROJECT_DIR$/apps/memorials/templates/burial_memories/detail.html" />
-        <option value="$PROJECT_DIR$/apps/memorials/models.py" />
         <option value="$PROJECT_DIR$/apps/notifications/models.py" />
         <option value="$PROJECT_DIR$/apps/donations/views.py" />
         <option value="$PROJECT_DIR$/adieulane/urls.py" />
         <option value="$PROJECT_DIR$/apps/wallets/views.py" />
         <option value="$PROJECT_DIR$/apps/wallets/urls.py" />
-        <option value="$PROJECT_DIR$/adieulane/settings/base.py" />
         <option value="$PROJECT_DIR$/apps/wallets/templates/wallets/fund_wallet.html" />
-        <option value="$PROJECT_DIR$/apps/memorials/views.py" />
         <option value="$PROJECT_DIR$/templates/navbar.html" />
-        <option value="$PROJECT_DIR$/apps/memorials/templates/burial_memories/form.html" />
-        <option value="$PROJECT_DIR$/apps/profiles/templates/profiles/me.html" />
-        <option value="$PROJECT_DIR$/adieulane/utils.py" />
         <option value="$PROJECT_DIR$/apps/accounts/urls.py" />
         <option value="$PROJECT_DIR$/apps/profiles/forms.py" />
         <option value="$PROJECT_DIR$/apps/profiles/models.py" />
-        <option value="$PROJECT_DIR$/apps/profiles/templates/profiles/forms.html" />
         <option value="$PROJECT_DIR$/apps/accounts/managers.py" />
-        <option value="$PROJECT_DIR$/apps/accounts/templates/accounts/signup.html" />
-        <option value="$PROJECT_DIR$/apps/profiles/signals.py" />
         <option value="$PROJECT_DIR$/apps/profiles/views.py" />
-        <option value="$PROJECT_DIR$/apps/wallets/models.py" />
         <option value="$PROJECT_DIR$/apps/accounts/forms.py" />
         <option value="$PROJECT_DIR$/apps/accounts/admin.py" />
         <option value="$PROJECT_DIR$/apps/profiles/urls.py" />
         <option value="$PROJECT_DIR$/apps/profiles/admin.py" />
         <option value="$PROJECT_DIR$/apps/accounts/models.py" />
+        <option value="$PROJECT_DIR$/apps/profiles/signals.py" />
+        <option value="$PROJECT_DIR$/apps/profiles/templates/profiles/forms.html" />
+        <option value="$PROJECT_DIR$/apps/profiles/templates/profiles/me.html" />
+        <option value="$PROJECT_DIR$/apps/accounts/templates/accounts/signup.html" />
         <option value="$PROJECT_DIR$/apps/accounts/views.py" />
+        <option value="$PROJECT_DIR$/apps/memorials/templates/burial_memories/form.html" />
+        <option value="$PROJECT_DIR$/apps/memorials/views.py" />
+        <option value="$PROJECT_DIR$/templates/layout.html" />
+        <option value="$PROJECT_DIR$/apps/memorials/templates/burial_memories/detail.html" />
+        <option value="$PROJECT_DIR$/apps/memorials/models.py" />
+        <option value="$PROJECT_DIR$/apps/memorials/urls.py" />
+        <option value="$PROJECT_DIR$/apps/wallets/models.py" />
+        <option value="$PROJECT_DIR$/adieulane/utils.py" />
+        <option value="$PROJECT_DIR$/apps/memorials/templates/burial_memories/gallery_list_v2.html" />
+        <option value="$PROJECT_DIR$/adieulane/settings/base.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="1" />
-    <option name="width" value="759" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-7" />
+    <option name="width" value="752" />
     <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -132,7 +169,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -144,6 +180,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -236,17 +273,21 @@
       <workItem from="1663841191097" duration="2078000" />
       <workItem from="1663847923090" duration="11677000" />
       <workItem from="1663873064648" duration="28535000" />
-      <workItem from="1664097848074" duration="4105000" />
+      <workItem from="1664097848074" duration="6501000" />
+      <workItem from="1664179922835" duration="15119000" />
+      <workItem from="1664287271119" duration="86000" />
+      <workItem from="1664302856391" duration="2594000" />
+      <workItem from="1664307316760" duration="2604000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="379632000" />
+    <option name="totallyTimeSpent" value="402431000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-7" y="0" width="752" height="735" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1570997" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3170029" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -260,13 +301,13 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Sourcery" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.30847457" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3080895" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.32881355" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.32881355" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.32930514" />
       <window_info anchor="right" id="Database" order="4" />
     </layout>
     <layout-to-restore>
@@ -298,60 +339,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/apps/wallets/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/notifications/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-178">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/notifications/templates/notifications/notification_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" column="10" lean-forward="true" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/notifications/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="1" column="52" selection-start-line="1" selection-start-column="52" selection-end-line="1" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/memorials/templates/burial_memories/list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="35" column="38" lean-forward="true" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
-          <folding>
-            <element signature="e#2156#2187#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/accounts/templates/accounts/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="35" column="39" lean-forward="true" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/common/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="90" lean-forward="true" selection-start-line="6" selection-start-column="90" selection-end-line="8" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/notifications/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
@@ -416,23 +403,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/memorials/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="84" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="80" selection-start-line="80" selection-end-line="81" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/adieulane/flutterwave.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -454,16 +424,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
           <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/memorials/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="211" column="33" selection-start-line="211" selection-start-column="33" selection-end-line="211" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -508,16 +468,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/memorials/templates/burial_memories/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="737" selection-start-line="737" selection-end-line="761" selection-end-column="18" />
-          <folding>
-            <element signature="e#86#105#0#DjangoTemplate" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/adieulane/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -538,45 +488,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/adieulane/settings/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="298" column="5" selection-start-line="298" selection-start-column="5" selection-end-line="298" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/navbar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="67" column="97" selection-start-line="67" selection-start-column="97" selection-end-line="67" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/memorials/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="75" column="53" selection-start-line="75" selection-start-column="53" selection-end-line="75" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <element signature="e#1764#2196#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/profiles/templates/profiles/me.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="604">
-          <caret line="79" column="111" selection-start-line="79" selection-start-column="111" selection-end-line="79" selection-end-column="111" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/memorials/templates/burial_memories/form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2496">
-          <caret line="104" column="22" selection-start-line="104" selection-start-column="22" selection-end-line="104" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -603,40 +518,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-754">
           <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/accounts/managers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-812">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/accounts/templates/accounts/signup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="56" column="86" selection-start-line="56" selection-start-column="86" selection-end-line="56" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/profiles/templates/profiles/forms.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/profiles/signals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="13" column="45" lean-forward="true" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -700,10 +581,85 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/apps/accounts/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="115" column="32" selection-start-line="115" selection-start-column="32" selection-end-line="115" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/profiles/templates/profiles/me.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1896">
+          <caret line="79" column="110" selection-start-line="79" selection-start-column="110" selection-end-line="79" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/accounts/templates/accounts/signup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="53" column="115" selection-start-line="53" selection-start-column="115" selection-end-line="53" selection-end-column="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/profiles/templates/profiles/forms.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="33" column="66" selection-start-line="33" selection-start-column="66" selection-end-line="33" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/accounts/managers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/apps/accounts/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="15" column="64" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
+        <state relative-caret-position="268">
+          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/profiles/signals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/memorials/templates/burial_memories/form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="100" column="99" selection-start-line="100" selection-start-column="87" selection-end-line="100" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="8" column="51" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/memorials/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -712,40 +668,131 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/wallets/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+        <state relative-caret-position="188">
+          <caret line="68" column="172" selection-start-line="68" selection-start-column="172" selection-end-line="68" selection-end-column="172" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/profiles/views.py">
+    <entry file="file://$PROJECT_DIR$/apps/memorials/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="66" column="34" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="34" />
+        <state relative-caret-position="204">
+          <caret line="233" column="17" selection-start-line="233" selection-start-column="17" selection-end-line="233" selection-end-column="17" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adieulane/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="127" column="4" selection-start-line="126" selection-start-column="36" selection-end-line="127" selection-end-column="4" />
+        <state relative-caret-position="172">
+          <caret line="79" column="41" selection-start-line="79" selection-start-column="41" selection-end-line="79" selection-end-column="41" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/accounts/views.py">
+    <entry file="file://$PROJECT_DIR$/apps/profiles/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1671">
-          <caret line="113" column="40" selection-start-line="113" selection-start-column="40" selection-end-line="113" selection-end-column="40" />
+        <state relative-caret-position="168">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/memorials/templates/burial_memories/gallery_list_v2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+          <folding>
+            <element signature="n#div#2;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#div#2;n#div#0;n#div#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/memorials/templates/burial_memories/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="355" column="27" lean-forward="true" selection-start-line="355" selection-start-column="27" selection-end-line="355" selection-end-column="27" />
+          <folding>
+            <element signature="e#86#105#0#DjangoTemplate" />
+            <element signature="n#script#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#div#3;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" />
+            <element signature="n#script#1;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/memorials/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="162" column="21" selection-start-line="162" selection-start-column="13" selection-end-line="162" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#1764#2196#0" />
+            <element signature="e#2547#3100#0" />
+            <element signature="e#3460#3918#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-888">
+          <caret line="29" selection-start-line="29" selection-end-line="29" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adieulane/settings/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="7" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adieulane/settings/production.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adieulane/settings/local.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="3" selection-start-line="3" selection-end-line="14" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adieulane/settings/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="145" column="79" selection-start-line="145" selection-start-column="79" selection-end-line="145" selection-end-column="79" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>

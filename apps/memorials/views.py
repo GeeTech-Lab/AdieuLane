@@ -64,20 +64,35 @@ class BurialMemoryCreate(LoginRequiredMixin, CreateView):
     template_name = "burial_memories/form.html"
 
     def form_valid(self, form):
-        upload_price = 1000
+        memorial_inst = form.save(commit=False)
         wallet = self.request.user.wallet
+        upload_price = 2000.00
         toggle_donation = self.request.POST.get("toggle_donation")
-        print(toggle_donation)
-        print(wallet.balance)
-        if upload_price >= wallet.balance:
-            wallet.balance = F('balance') - exchange_rate(wallet, upload_price, 0.0014, "USD")
+        if wallet.currency == "USD":
+            dollar_upload_price = exchange_rate(wallet, upload_price, 0.0014, "USD")
+            if wallet.balance >= dollar_upload_price:
+                wallet.balance = F('balance') - dollar_upload_price
+                wallet.save()
+                messages.success(self.request, f"Memorial uploaded successfully for ${dollar_upload_price}!!!...")
+                if toggle_donation:
+                    memorial_inst.accept_donations = True
+                    print("Donation accepted...")
+                memorial_inst.user = self.request.user
+                print("successfully uploaded with Dollar...")
+                memorial_inst.save()
+                return super(BurialMemoryCreate, self).form_valid(form)
+            messages.warning(self.request, "Memorial not created due to insufficient fund!!!...")
+            return redirect("wallets:fund_wallet", self.request.user.wallet.uid)
+        if wallet.balance >= upload_price:
+            wallet.balance = F('balance') - upload_price
             wallet.save()
-            if toggle_donation is not None:
-                form.instance.accept_donations = True
-            form.instance.user = self.request.user
-            messages.success(self.request, "Memorial successfully created")
-            return super().form_valid(form)
-
+            messages.success(self.request, f"Memorial uploaded successfully for N{upload_price}!!!...")
+            if toggle_donation:
+                memorial_inst.accept_donations = True
+                print("Donation accepted...")
+            memorial_inst.user = self.request.user
+            memorial_inst.save()
+            return super(BurialMemoryCreate, self).form_valid(form)
         messages.warning(self.request, "Memorial not created due to insufficient fund!!!...")
         return redirect("wallets:fund_wallet", self.request.user.wallet.uid)
 
@@ -85,9 +100,9 @@ class BurialMemoryCreate(LoginRequiredMixin, CreateView):
         context = super(BurialMemoryCreate, self).get_context_data()
         my_wallet = self.request.user.wallet
         if my_wallet.user.profile.country == "NG":
-            context['upload_price'] = exchange_rate(my_wallet, 1000, 0.0020, "NGN")
+            context['upload_price'] = exchange_rate(my_wallet, 2000, 1, "NGN")
         else:
-            context['upload_price'] = exchange_rate(my_wallet, 1000, 0.0020, "USD")
+            context['upload_price'] = exchange_rate(my_wallet, 2000, 0.0014, "USD")
         context['wallet'] = my_wallet
         return context
 

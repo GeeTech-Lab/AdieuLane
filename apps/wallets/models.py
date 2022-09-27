@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from adieulane.settings import AUTH_USER_MODEL
 from apps.common.models import TimeStampedUUIDModel
 from apps.notifications.models import Notification
+from apps.profiles.models import Profile
 
 logger = logging.getLogger(__name__)
 
@@ -35,16 +36,16 @@ class Wallet(models.Model):
         return f"ID {self.uid} owner-{self.user.username}"
 
 
-@receiver(post_save, sender=AUTH_USER_MODEL)
+@receiver(post_save, sender=Profile)
 def create_user_wallet(sender, instance, created, **kwargs):
     if created:
-        currency = "NGN" if instance.profile.country == "NG" else "USD"
-        Wallet.objects.create(user=instance, currency=currency)
+        currency = "NGN" if instance.country == "NG" else "USD"
+        Wallet.objects.create(user=instance.user, currency=currency)
 
 
-@receiver(post_save, sender=AUTH_USER_MODEL)
+@receiver(post_save, sender=Profile)
 def save_user_wallet(sender, instance, **kwargs):
-    instance.wallet.save()
+    instance.user.wallet.save()
     logger.info(f"{instance}'s wallet created")
 
 
@@ -65,7 +66,7 @@ class WalletTransaction(TimeStampedUUIDModel):
 def user_add_transactions_notification(sender, instance, *args, **kwargs):
     transaction = instance
     sender = transaction.wallet.user
-    message = f"Transaction for {transaction.transaction_id} with amount {transaction.currency}{transaction.amount} was initiated.\n Time-stamp: {transaction.created_at}.<br> Transaction status: {transaction.payment_status}"
+    message = f"Transaction for {transaction.transaction_id} with amount {transaction.currency}{transaction.amount} was initiated.\n Time-stamp: {transaction.created_at}.\n Transaction status: {transaction.payment_status}"
     notify = Notification(
         wallet_transaction=transaction,
         from_user=sender,

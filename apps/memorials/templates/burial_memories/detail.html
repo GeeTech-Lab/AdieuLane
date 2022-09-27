@@ -181,12 +181,16 @@
                                             </div>
                                         </div>
 
+                                    </div>
+                                </div>
+                                <div class="row align-content-center">
+                                    <div class="col-md-12">
                                         <br/>
                                         <!-- Tribute form -->
                                         <div class="section section-gray">
                                             <div class="container tim-container">
                                                 <div class="row">
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-8 ml-auto mr-auto">
                                                         <h3 class="text-center"><i class="fa fa-pencil"></i> Leave a
                                                             Tribute</h3>
                                                         <div class="media media-post">
@@ -196,7 +200,7 @@
                                                                     hx-target="#tribute_list"
                                                                     _="on htmx:afterRequest reset() me">
                                                                 {% csrf_token %}
-                                                                <div class=" row text-center">
+                                                                <div class=" row text-center mb-3">
                                                                     <!--RADIO Candle-->
                                                                     <div class="col-md-4 mr-auto ml-auto">
                                                                         <input type="radio" class="radio_item"
@@ -255,8 +259,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>
@@ -676,7 +678,7 @@
                       ],
                 {% endif %}
                 country: "{{ memorial.user.profile.country }}",
-                payment_options: "card, banktransfer, ussd",
+                payment_options: "card, banktransfer, {% if memorial.user.profile.country != 'NG' %} ussd {% endif %}",
 
                 // use customer details if user is not logged in, else add user_id to the request
                 {% if request.user.is_authenticated %}

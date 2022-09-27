@@ -15,8 +15,8 @@ urlpatterns = [
 
 htmx_urlpatterns = [
     # path('toggle_donation', views.toggle_accept_donation, name='toggle_donation'),
-    path('<slug:slug>/tribute/', views.add_tribute, name='add_tribute'),
-    path('<slug:slug>/add_gallery_v2/', views.GalleryAddView.as_view(), name='add_gallery_v2'),
+    path('<slug:slug>/tribute/', csrf_exempt(views.add_tribute), name='add_tribute'),
+    path('<slug:slug>/add_gallery_v2/', csrf_exempt(views.GalleryAddView.as_view()), name='add_gallery_v2'),
 ]
 
 urlpatterns += htmx_urlpatterns
