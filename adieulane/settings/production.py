@@ -2,6 +2,11 @@ import cloudinary
 from .base import *
 
 
+SECRET_KEY = "django-insecure-xvb(l5by(32a!v#!q(@-#*t+)g@9$=4n*bay6c&f1xy#4*@*#!"
+DEBUG = True
+ALLOWED_HOSTS = "*"
+
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
