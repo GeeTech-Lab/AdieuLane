@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5f8b045-d715-4680-83bb-49c1aee78987" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/adieulane/settings/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/adieulane/settings/base.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,11 +30,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/adieulane/settings/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="20" column="45" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="45" />
+            <state relative-caret-position="-908">
+              <caret line="230" selection-start-line="230" selection-end-line="277" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
-                <element signature="e#6647#7764#0" />
                 <element signature="e#7802#8480#0" />
               </folding>
             </state>
@@ -257,18 +255,18 @@
       <workItem from="1664307316760" duration="6836000" />
       <workItem from="1664316707885" duration="2644000" />
       <workItem from="1664352499470" duration="4267000" />
-      <workItem from="1664407975788" duration="87000" />
+      <workItem from="1664407975788" duration="1308000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="413661000" />
+    <option name="totallyTimeSpent" value="414882000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18202417" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18202417" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -778,11 +776,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/adieulane/settings/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="20" column="45" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="45" />
+        <state relative-caret-position="-908">
+          <caret line="230" selection-start-line="230" selection-end-line="277" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
-            <element signature="e#6647#7764#0" />
             <element signature="e#7802#8480#0" />
           </folding>
         </state>
