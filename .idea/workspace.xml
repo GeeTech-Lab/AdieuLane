@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f5f8b045-d715-4680-83bb-49c1aee78987" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adieulane/settings/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/adieulane/settings/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adieulane/settings/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/adieulane/settings/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adieulane/settings/local.py" beforeDir="false" afterPath="$PROJECT_DIR$/adieulane/settings/local.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/adieulane/settings/production.py" beforeDir="false" afterPath="$PROJECT_DIR$/adieulane/settings/production.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,9 +22,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adieulane/settings/local.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="5184">
+              <caret line="272" lean-forward="true" selection-start-line="272" selection-end-line="272" />
               <folding>
-                <element signature="e#0#17#0" expanded="true" />
+                <element signature="e#0#24#0" expanded="true" />
+                <element signature="e#4947#4959#0" />
+                <element signature="e#6377#7494#0" />
+                <element signature="e#7532#8210#0" />
               </folding>
             </state>
           </provider>
@@ -30,22 +37,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adieulane/settings/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="145" column="79" selection-end-line="304" />
+            <state relative-caret-position="484">
+              <caret line="333" selection-start-line="333" selection-end-line="333" />
               <folding>
-                <element signature="e#0#24#0" expanded="true" />
+                <element signature="e#0#17#0" expanded="true" />
+                <element signature="e#6647#7764#0" />
+                <element signature="e#7802#8480#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/adieulane/settings/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="2" column="25" lean-forward="true" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adieulane/settings/production.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="330" column="41" lean-forward="true" selection-start-line="330" selection-start-column="41" selection-end-line="330" selection-end-column="41" />
+            <state relative-caret-position="4613">
+              <caret line="230" column="14" lean-forward="true" selection-end-line="333" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
+                <element signature="e#6421#7538#0" />
+                <element signature="e#7576#8254#0" />
               </folding>
             </state>
           </provider>
@@ -107,8 +130,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/apps/wallets/templates/wallets/fund_wallet_success.html" />
-        <option value="$PROJECT_DIR$/apps/notifications/admin.py" />
         <option value="$PROJECT_DIR$/apps/notifications/templates/notifications/notification_list.html" />
         <option value="$PROJECT_DIR$/apps/notifications/urls.py" />
         <option value="$PROJECT_DIR$/templates/includes/test.html" />
@@ -155,13 +176,15 @@
         <option value="$PROJECT_DIR$/apps/wallets/models.py" />
         <option value="$PROJECT_DIR$/adieulane/utils.py" />
         <option value="$PROJECT_DIR$/apps/memorials/templates/burial_memories/gallery_list_v2.html" />
-        <option value="$PROJECT_DIR$/adieulane/settings/base.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/adieulane/settings/production.py" />
+        <option value="$PROJECT_DIR$/adieulane/settings/local.py" />
+        <option value="$PROJECT_DIR$/adieulane/settings/base.py" />
+        <option value="$PROJECT_DIR$/adieulane/settings/__init__.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="711" />
     <option name="height" value="735" />
@@ -171,7 +194,31 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="adieulane" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adieulane" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adieulane" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adieulane" type="462c0819:PsiDirectoryNode" />
+              <item name="adieulane" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adieulane" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adieulane" type="462c0819:PsiDirectoryNode" />
+              <item name="adieulane" type="462c0819:PsiDirectoryNode" />
+              <item name="settings" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -269,18 +316,18 @@
       <workItem from="1664302856391" duration="2594000" />
       <workItem from="1664307316760" duration="6836000" />
       <workItem from="1664316707885" duration="2644000" />
-      <workItem from="1664352499470" duration="3026000" />
+      <workItem from="1664352499470" duration="3847000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="412333000" />
+    <option name="totallyTimeSpent" value="413154000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="711" height="735" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.13217522" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17975831" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -294,7 +341,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Sourcery" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.30169493" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.48537004" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.32881355" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.32881355" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -743,39 +790,10 @@
     <entry file="file://$PROJECT_DIR$/apps/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/adieulane/settings/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="7" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adieulane/settings/local.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1848">
           <caret line="77" column="14" selection-start-line="77" selection-start-column="14" selection-end-line="77" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adieulane/settings/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="145" column="79" selection-end-line="304" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -786,12 +804,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/adieulane/settings/local.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5184">
+          <caret line="272" lean-forward="true" selection-start-line="272" selection-end-line="272" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#4947#4959#0" />
+            <element signature="e#6377#7494#0" />
+            <element signature="e#7532#8210#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/adieulane/settings/production.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="330" column="41" lean-forward="true" selection-start-line="330" selection-start-column="41" selection-end-line="330" selection-end-column="41" />
+        <state relative-caret-position="4613">
+          <caret line="230" column="14" lean-forward="true" selection-end-line="333" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
+            <element signature="e#6421#7538#0" />
+            <element signature="e#7576#8254#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adieulane/settings/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="333" selection-start-line="333" selection-end-line="333" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+            <element signature="e#6647#7764#0" />
+            <element signature="e#7802#8480#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adieulane/settings/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="25" lean-forward="true" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>

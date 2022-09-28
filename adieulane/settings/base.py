@@ -1,25 +1,24 @@
+import cloudinary
 from pathlib import Path
 import os
 import environ
 from datetime import timedelta
 from django.contrib import messages
 
-env = environ.Env(DEBUG=(bool, False))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-environ.Env.read_env(BASE_DIR / ".env")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env("DEBUG")
+DEBUG = os.environ.get("DEBUG")
 
-ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 # Application definition
 
@@ -97,10 +96,21 @@ WSGI_APPLICATION = 'adieulane.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get('NAME'),
+        "USER": os.environ.get("USER"),
+        "PASSWORD": os.environ.get("PASSWORD"),
+        "HOST": os.environ.get("HOST"),
+        "PORT": os.environ.get("PORT"),
     }
 }
 
@@ -175,7 +185,7 @@ SIMPLE_JWT = {
     ),
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=120),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
-    'SIGNING_KEY': env('SIGNING_KEY'),
+    'SIGNING_KEY': os.environ.get('SIGNING_KEY'),
     'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
 }
@@ -199,16 +209,16 @@ SIMPLE_JWT = {
 #         'user_delete': 'djoser.serializers.UserDeleteSerializer',
 #     }
 # }
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
-
-X_FRAME_OPTIONS = 'DENY'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
 # This validates file sizes...
 FILE_UPLOAD_PERMISSION = 0o640
+
 # allow upload big file
 DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 10  # 10M
 FILE_UPLOAD_MAX_MEMORY_SIZE = DATA_UPLOAD_MAX_MEMORY_SIZE
@@ -301,4 +311,23 @@ JET_THEMES = [
 ]
 
 DEFAULT_CURRENCY = 'NGN'
-OPENEXCHANGERATES_APP_ID = "c2b2efcb306e075d9c2f2d0b614119ea"
+# OPENEXCHANGERATES_APP_ID = "c2b2efcb306e075d9c2f2d0b614119ea"
+
+
+EMAIL_HOST = os.environ.get("EMAIL_HOST")
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = os.environ.get("EMAIL_PORT")
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = False
+DEFAULT_FROM_EMAIL = 'support@geetechlab.com'
+
+SITE_NAME = "AdieuLane"
+
+
+cloudinary.config(
+    cloud_name=os.environ.get("cloud_name"),
+    api_key=os.environ.get("api_key"),
+    api_secret=os.environ.get("api_secret"),
+)
