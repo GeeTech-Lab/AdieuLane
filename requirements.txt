@@ -68,6 +68,7 @@ phonenumbers==8.11.1
 Pillow==7.0.0
 pipenv==2020.11.15
 platformdirs==2.5.2
+psycopg2==2.9.3
 psycopg2-binary==2.9.3
 pycodestyle==2.9.1
 pycparser==2.21
@@ -76,6 +77,7 @@ pyflakes==2.5.0
 Pygments==2.7.3
 PyJWT==2.5.0
 pylint==2.15.3
+pypiwin32==223
 python3-openid==3.2.0
 rave-python==1.1.2
 requests==2.28.1
