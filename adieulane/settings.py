@@ -1,7 +1,6 @@
 import cloudinary
 from pathlib import Path
 import os
-import environ
 from datetime import timedelta
 from django.contrib import messages
 
@@ -16,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG")
+DEBUG = str(os.environ.get('DEBUG')) == '1'
 
 ALLOWED_HOSTS = [
     "adieulane-production.up.railway.app",
@@ -101,23 +100,41 @@ WSGI_APPLICATION = 'adieulane.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get('NAME'),
-        "USER": os.environ.get("USER"),
-        "PASSWORD": os.environ.get("PASSWORD"),
-        "HOST": os.environ.get("HOST"),
-        "PORT": os.environ.get("PORT"),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+USER = os.environ.get("POSTGRES_USER")
+PASSWORD = os.environ.get("POSTGRES_PASSWORD")
+DATABASE = os.environ.get("POSTGRES_DB")
+HOST = os.environ.get("POSTGRES_HOST")
+PORT = os.environ.get("POSTGRES_PORT")
+DB_IS_AVAIL = all([
+    USER,
+    PASSWORD,
+    DATABASE,
+    HOST,
+    PORT,
+])
+
+POSTGRES_READY = str(os.environ.get("POSTGRES_READY")) == "1"
+
+if DB_IS_AVAIL and POSTGRES_READY:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "DATABASE": DATABASE,
+            "USER": USER,
+            "PASSWORD": PASSWORD,
+            "HOST": HOST,
+            "PORT": PORT,
+        }
+    }
+
+print(DATABASES)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -282,6 +299,7 @@ MESSAGE_TAGS = {
 # })
 
 # Django jet Admin...
+
 JET_THEMES = [
     {
         'theme': 'default', # theme folder name
