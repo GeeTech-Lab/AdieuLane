@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5f8b045-d715-4680-83bb-49c1aee78987" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/adieulane/settings/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/adieulane/settings/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adieulane/settings/production.py" beforeDir="false" afterPath="$PROJECT_DIR$/adieulane/settings/production.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +27,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adieulane/settings/base.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-908">
@@ -35,6 +35,18 @@
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
                 <element signature="e#7802#8480#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/adieulane/settings/production.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="231" column="23" lean-forward="true" selection-start-line="231" selection-start-column="23" selection-end-line="231" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#17#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -125,10 +137,10 @@
         <option value="$PROJECT_DIR$/adieulane/utils.py" />
         <option value="$PROJECT_DIR$/apps/memorials/templates/burial_memories/gallery_list_v2.html" />
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/adieulane/settings/production.py" />
         <option value="$PROJECT_DIR$/adieulane/settings/local.py" />
         <option value="$PROJECT_DIR$/adieulane/settings/__init__.py" />
         <option value="$PROJECT_DIR$/adieulane/settings/base.py" />
+        <option value="$PROJECT_DIR$/adieulane/settings/production.py" />
       </list>
     </option>
   </component>
@@ -151,6 +163,17 @@
             <path>
               <item name="adieulane" type="b2602c69:ProjectViewProjectNode" />
               <item name="adieulane" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adieulane" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adieulane" type="462c0819:PsiDirectoryNode" />
+              <item name="adieulane" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adieulane" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adieulane" type="462c0819:PsiDirectoryNode" />
+              <item name="adieulane" type="462c0819:PsiDirectoryNode" />
+              <item name="settings" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -255,18 +278,18 @@
       <workItem from="1664307316760" duration="6836000" />
       <workItem from="1664316707885" duration="2644000" />
       <workItem from="1664352499470" duration="4267000" />
-      <workItem from="1664407975788" duration="1308000" />
+      <workItem from="1664407975788" duration="1875000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="414882000" />
+    <option name="totallyTimeSpent" value="415449000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18202417" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18202417" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -280,7 +303,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Sourcery" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.48474577" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.48474577" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.32881355" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.32881355" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -735,18 +758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/adieulane/settings/production.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4613">
-          <caret line="230" column="14" lean-forward="true" selection-end-line="333" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-            <element signature="e#6421#7538#0" />
-            <element signature="e#7576#8254#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="61">
@@ -781,6 +792,16 @@
           <folding>
             <element signature="e#0#17#0" expanded="true" />
             <element signature="e#7802#8480#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adieulane/settings/production.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="231" column="23" lean-forward="true" selection-start-line="231" selection-start-column="23" selection-end-line="231" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
           </folding>
         </state>
       </provider>
