@@ -38,7 +38,8 @@ https://www.adieulane.com
 ## Screenshots
 
 ![App Screenshot](https://res.cloudinary.com/geetechlab-com/image/upload/v1674790688/adieulane.com/HomePage_ml1fws.png)
-
+![App Screenshot](https://res.cloudinary.com/geetechlab-com/image/upload/v1674790692/adieulane.com/RegisterPage_h9btez.png)
+![App Screenshot](https://res.cloudinary.com/geetechlab-com/image/upload/v1674790675/adieulane.com/LoginPage_x1q5jw.png)
 
 ## Support
 
