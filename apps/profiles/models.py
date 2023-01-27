@@ -28,7 +28,7 @@ class Profile(TimeStampedUUIDModel):
         resource_type="image",
     )
     # currency = models.ForeignKey(Currency, on_delete=models.CASCADE, blank=True, null=True)
-    country = CountryField(verbose_name=_("Country"), default="US", blank=True, null=True)
+    country = CountryField(verbose_name=_("Country"), default="NG", blank=True, null=True)
     city = models.CharField(verbose_name=_("City"), max_length=100, default="Lagos", blank=True, null=True)
     birth_day = models.DateTimeField(blank=True, null=True)
 

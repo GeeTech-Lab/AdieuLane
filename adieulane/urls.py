@@ -10,7 +10,7 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='home'),
     path('api-auth/', include('rest_framework.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_reresh'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('accounts/', include(('apps.accounts.urls', 'apps.accounts'), namespace='accounts')),
     path('api/accounts/', include(('apps.accounts.api.urls', 'apps.accounts'), namespace='api_accounts')),
     path('profiles/', include(('apps.profiles.urls', 'apps.profiles'), namespace='profiles')),

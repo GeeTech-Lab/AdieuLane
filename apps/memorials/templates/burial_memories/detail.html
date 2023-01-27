@@ -388,7 +388,7 @@
                                                     </p>
                                                 </div>
                                                 <br/>
-                                                {% if request.user == memorial.user %}
+                                                {% if request.user == memorial.user and request.user.is_authenticated %}
                                                     <form id="bank_registration_form" method="post" action="{% url 'donations:create_donation_account' memorial.slug %}">
                                                         {% csrf_token %}
                                                         <div class="input-group">
@@ -438,11 +438,11 @@
 
                                                         <div class="input-group">
                                                             <input type="number"
-                                                                   placeholder="Bank Account Number"
-                                                                   class="form-control"
-                                                                   name="account_number"
-                                                                   id="account_number"
-                                                                   required>
+                                                               placeholder="Bank Account Number"
+                                                               class="form-control"
+                                                               name="account_number"
+                                                               id="account_number"
+                                                               required>
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text">
                                                                         <i class="fa fa-bank"></i>

@@ -14,9 +14,10 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.views import generic
 from django.views.generic.base import View
-from djoser.conf import settings
+# from djoser.conf import settings
 from validate_email import validate_email
 
+from adieulane import settings
 from apps.accounts.models import User
 from apps.accounts.tokens import account_activation_token
 

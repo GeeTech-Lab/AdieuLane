@@ -25,7 +25,8 @@ class BurialMemoryDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(BurialMemoryDetail, self).get_context_data(**kwargs)
         context["pub_key"] = FLUTTERWAVE_PUBLIC_KEY
-        context["banks"] = list_bank_names(self.request.user.profile.country, FLUTTERWAVE_PUBLIC_KEY)
+        if self.request.user.is_authenticated:
+            context["banks"] = list_bank_names(self.request.user.profile.country, FLUTTERWAVE_PUBLIC_KEY)
         context["galleries"] = MemoryGallery.objects.filter(burial_memory=self.get_object())
         context["donations"] = self.get_object().donations.all()
         context["tributes"] = self.get_object().memory_tributes.all()

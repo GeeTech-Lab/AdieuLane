@@ -25,41 +25,45 @@ class DonationAccountCreateView(View):
         )
         print(f"get_bank_code() ==> Executed! \n {get_bank_code}")
 
-        # Create sub_account
-        sub_account = create_sub_account(
-            get_bank_code["code"],
-            account_number,
-            memorial.user.get_short_name,
-            memorial.user.email,
-            memorial.user.get_full_name,
-            memorial.user.profile.phone,
-            memorial.user.profile.phone,
-            memorial.user.profile.country,
-            0.05,
-            routing_number,
-            swift_code,
-            branch_code,
-            FLUTTERWAVE_SECRET_KEY,
-        )
-
-        # Create DonationAccount()
-        if sub_account["status"] == "success":
-            donation = DonationAccount.objects.filter(burial_memory=memorial).update(
-                account_name=sub_account["data"]["full_name"],
-                bank_account_number=sub_account["data"]["account_number"],
-                bank_code=sub_account["data"]["account_bank"],
-                bank_name=sub_account["data"]["bank_name"],
-                sub_account_id=sub_account["data"]["subaccount_id"],
-                split_type=sub_account["data"]["split_type"],
-                split_value=sub_account["data"]["split_value"],
+        try:
+            # Create sub_account
+            sub_account = create_sub_account(
+                get_bank_code["code"],
+                account_number,
+                memorial.user.get_short_name,
+                memorial.user.email,
+                memorial.user.get_full_name,
+                memorial.user.phone,
+                memorial.user.phone,
+                memorial.user.profile.country,
+                0.05,
+                routing_number,
+                swift_code,
+                branch_code,
+                "FLWSECK_TEST-d917ff9b7854fe25486b22ff69ed614d-X",
             )
-            messages.success(request, "Account added successfully")
+        except Exception as e:
+            messages.warning(request, e)
             return redirect("memorials:detail", memorial.slug)
-            # return JsonResponse({'account_success': 'Account added successfully'}, status=200)
-        messages.warning(request, "Account was not added please check your network and try again")
-        return redirect("memorials:detail", memorial.slug)
-        # return JsonResponse({'account_error': 'Account was not added please check your network and try again'},
-        # status=400)
+        else:
+            # Create DonationAccount()
+            if sub_account["status"] == "success":
+                donation = DonationAccount.objects.filter(burial_memory=memorial).update(
+                    account_name=sub_account["data"]["full_name"],
+                    bank_account_number=sub_account["data"]["account_number"],
+                    bank_code=sub_account["data"]["account_bank"],
+                    bank_name=sub_account["data"]["bank_name"],
+                    sub_account_id=sub_account["data"]["subaccount_id"],
+                    split_type=sub_account["data"]["split_type"],
+                    split_value=sub_account["data"]["split_value"],
+                )
+                messages.success(request, "Account added successfully")
+                return redirect("memorials:detail", memorial.slug)
+                # return JsonResponse({'account_success': 'Account added successfully'}, status=200)
+            messages.warning(request, "Invalid Account please check your network and try again")
+            return redirect("memorials:detail", memorial.slug)
+            # return JsonResponse({'account_error': 'Account was not added please check your network and try again'},
+            # status=400)
 
 
 def add_donation(request, slug):
